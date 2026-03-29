@@ -1,0 +1,364 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contact" description="Get in touch with Dalmatia Estates to plan your perfect Croatian villa getaway">
+  <header class="page-header">
+    <span class="page-header__tag">Get in Touch</span>
+    <h1 class="page-header__title">Let's Plan Your Escape</h1>
+    <p class="page-header__desc">
+      Our specialists are ready to curate your perfect Dalmatian experience. 
+      Every inquiry receives a personal response within 24 hours.
+    </p>
+  </header>
+  
+  <section class="contact-page">
+    <div class="contact-page__info">
+      <div class="contact-block">
+        <h3>Visit Our Office</h3>
+        <p>
+          Ulica Kneza Branimira 42<br>
+          21000 Split, Croatia
+        </p>
+      </div>
+      
+      <div class="contact-block">
+        <h3>Email Us</h3>
+        <a href="mailto:hello@dalmatia-estates.com">hello@dalmatia-estates.com</a>
+        <a href="mailto:reservations@dalmatia-estates.com">reservations@dalmatia-estates.com</a>
+      </div>
+      
+      <div class="contact-block">
+        <h3>Call Us</h3>
+        <a href="tel:+385911234567">+385 91 123 4567</a>
+        <p class="contact-block__note">Mon–Sat, 9:00–19:00 CET</p>
+      </div>
+      
+      <div class="contact-block">
+        <h3>WhatsApp</h3>
+        <a href="#">+385 91 123 4567</a>
+        <p class="contact-block__note">Available 24/7 for urgent inquiries</p>
+      </div>
+      
+      <div class="contact-social">
+        <h3>Follow Us</h3>
+        <div class="contact-social__links">
+          <a href="#" aria-label="Instagram">Instagram</a>
+          <a href="#" aria-label="Facebook">Facebook</a>
+          <a href="#" aria-label="Pinterest">Pinterest</a>
+        </div>
+      </div>
+    </div>
+    
+    <form class="contact-form">
+      <h2>Private Inquiry</h2>
+      <p>Tell us about your dream Croatian getaway and we'll craft the perfect experience.</p>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="firstName">First Name *</label>
+          <input type="text" id="firstName" name="firstName" required>
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name *</label>
+          <input type="text" id="lastName" name="lastName" required>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone">
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="estate">Interested Estate</label>
+        <select id="estate" name="estate">
+          <option value="">Select an estate...</option>
+          <option value="villa-pietra">Villa Pietra · Dubrovnik</option>
+          <option value="casa-adriatica">Casa Adriatica · Split</option>
+          <option value="villa-lavanda">Villa Lavanda · Hvar</option>
+          <option value="korcula-retreat">Korčula Retreat</option>
+          <option value="villa-oliva">Villa Oliva · Istria</option>
+          <option value="palace-zadar">Palace Zadar</option>
+          <option value="not-sure">Not sure yet — please advise</option>
+        </select>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="checkin">Check-in Date</label>
+          <input type="date" id="checkin" name="checkin">
+        </div>
+        <div class="form-group">
+          <label for="checkout">Check-out Date</label>
+          <input type="date" id="checkout" name="checkout">
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="guests">Number of Guests</label>
+        <select id="guests" name="guests">
+          <option value="">Select...</option>
+          <option value="2">2 guests</option>
+          <option value="4">4 guests</option>
+          <option value="6">6 guests</option>
+          <option value="8">8 guests</option>
+          <option value="10+">10+ guests</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="message">Your Vision *</label>
+        <textarea id="message" name="message" rows="5" placeholder="Tell us about your ideal Croatian experience, any special occasions, preferences, or questions..." required></textarea>
+      </div>
+      
+      <div class="form-group form-group--checkbox">
+        <input type="checkbox" id="newsletter" name="newsletter">
+        <label for="newsletter">I'd like to receive exclusive offers and estate news</label>
+      </div>
+      
+      <button type="submit" class="btn btn--primary btn--full">Send Inquiry</button>
+      
+      <p class="form-note">
+        By submitting this form, you agree to our <a href="#">Privacy Policy</a>. 
+        We'll respond within 24 hours.
+      </p>
+    </form>
+  </section>
+  
+  <section class="map-section">
+    <div class="map-placeholder">
+      <div class="map-placeholder__content">
+        <span>📍</span>
+        <p>Find us in the heart of Split, Croatia</p>
+        <a href="https://maps.google.com" target="_blank" rel="noopener" class="btn btn--outline">Open in Google Maps</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .contact-page {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    padding: 100px 5%;
+    background: var(--cream);
+  }
+  
+  .contact-page__info {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .contact-block h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--olive);
+    margin-bottom: 12px;
+  }
+  
+  .contact-block p,
+  .contact-block a {
+    font-size: 17px;
+    color: var(--charcoal);
+    line-height: 1.6;
+    display: block;
+  }
+  
+  .contact-block a {
+    transition: color 0.3s ease;
+  }
+  
+  .contact-block a:hover {
+    color: var(--olive);
+  }
+  
+  .contact-block__note {
+    font-size: 14px !important;
+    color: var(--stone) !important;
+    margin-top: 4px;
+  }
+  
+  .contact-social__links {
+    display: flex;
+    gap: 24px;
+  }
+  
+  .contact-social__links a {
+    font-size: 15px;
+    color: var(--charcoal);
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s ease;
+  }
+  
+  .contact-social__links a:hover {
+    color: var(--olive);
+    border-color: var(--olive);
+  }
+  
+  .contact-form {
+    background: var(--white);
+    padding: 60px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+  }
+  
+  .contact-form h2 {
+    font-size: 32px;
+    margin-bottom: 12px;
+    color: var(--charcoal);
+  }
+  
+  .contact-form > p {
+    font-size: 16px;
+    color: var(--charcoal-light);
+    margin-bottom: 40px;
+  }
+  
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  
+  .form-group {
+    margin-bottom: 28px;
+  }
+  
+  .form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    margin-bottom: 10px;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 16px 0;
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    border: none;
+    border-bottom: 1.5px solid rgba(0,0,0,0.15);
+    background: transparent;
+    color: var(--charcoal);
+    transition: border-color 0.3s ease;
+  }
+  
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--olive);
+  }
+  
+  .form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+  
+  .form-group--checkbox {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .form-group--checkbox input {
+    width: auto;
+    accent-color: var(--olive);
+  }
+  
+  .form-group--checkbox label {
+    margin: 0;
+    font-size: 14px;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--charcoal-light);
+  }
+  
+  .btn--full {
+    width: 100%;
+    justify-content: center;
+    margin-top: 16px;
+  }
+  
+  .form-note {
+    font-size: 13px;
+    color: var(--stone);
+    text-align: center;
+    margin-top: 24px;
+  }
+  
+  .form-note a {
+    color: var(--olive);
+    text-decoration: underline;
+  }
+  
+  .map-section {
+    height: 400px;
+    background: var(--linen);
+  }
+  
+  .map-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .map-placeholder__content {
+    text-align: center;
+  }
+  
+  .map-placeholder__content span {
+    font-size: 48px;
+    display: block;
+    margin-bottom: 16px;
+  }
+  
+  .map-placeholder__content p {
+    font-size: 18px;
+    color: var(--charcoal);
+    margin-bottom: 24px;
+  }
+  
+  @media (max-width: 1024px) {
+    .contact-page {
+      grid-template-columns: 1fr;
+      gap: 60px;
+    }
+    
+    .contact-page__info {
+      order: 1;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .contact-page {
+      padding: 60px 5%;
+    }
+    
+    .contact-form {
+      padding: 40px 24px;
+    }
+    
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

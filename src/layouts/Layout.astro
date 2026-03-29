@@ -1,0 +1,303 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Curated luxury villas along Croatia's stunning Dalmatian Coast" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content={description} />
+  <title>{title} | Dalmatia Estates</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="cursor"></div>
+  
+  <!-- Nav -->
+  <nav class="nav">
+    <a href="/" class="nav__logo">Dalmatia</a>
+    <div class="nav__links">
+      <a href="/estates">Estates</a>
+      <a href="/about">About</a>
+      <a href="/#tour">Virtual Tour</a>
+      <a href="/contact">Contact</a>
+    </div>
+  </nav>
+
+  <slot />
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__logo">Dalmatia</div>
+    <div class="footer__links">
+      <a href="/estates">Estates</a>
+      <a href="/about">About</a>
+      <a href="/#tour">Virtual Tour</a>
+      <a href="/contact">Contact</a>
+      <a href="#">Privacy</a>
+    </div>
+    <div class="footer__copy">© 2026 Dalmatia Estates</div>
+  </footer>
+
+  <script>
+    const cursor = document.querySelector('.cursor');
+    if (cursor && window.innerWidth > 768) {
+      document.addEventListener('mousemove', e => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+      });
+      
+      document.querySelectorAll('a, button, .estate, .tour__play, .property-card').forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+      });
+    }
+  </script>
+</body>
+</html>
+
+<style is:global>
+  @keyframes fadeUp { 
+    from { opacity: 0; transform: translateY(30px); } 
+    to { opacity: 1; transform: translateY(0); } 
+  }
+  @keyframes float { 
+    0%, 100% { transform: translateY(0); } 
+    50% { transform: translateY(-10px); } 
+  }
+  @keyframes reveal {
+    from { clip-path: inset(0 100% 0 0); }
+    to { clip-path: inset(0 0 0 0); }
+  }
+  
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  :root {
+    --olive: #3D4A35;
+    --olive-light: #5A6B4F;
+    --sand: #B8A992;
+    --cream: #F7F5F0;
+    --linen: #EDE8E0;
+    --charcoal: #1F1F1F;
+    --charcoal-light: #3A3A3A;
+    --stone: #6B6560;
+    --terracotta: #C17F59;
+    --white: #FFFFFF;
+  }
+  
+  html { scroll-behavior: smooth; }
+  
+  body {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+    color: var(--charcoal);
+    background: var(--cream);
+    line-height: 1.7;
+    cursor: none;
+    overflow-x: hidden;
+  }
+  
+  .cursor {
+    width: 20px;
+    height: 20px;
+    border: 1.5px solid var(--olive);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.15s ease, background 0.2s ease;
+    mix-blend-mode: difference;
+  }
+  
+  .cursor.hover {
+    transform: scale(2.5);
+    background: var(--olive);
+    border-color: var(--olive);
+  }
+  
+  h1, h2, h3 { 
+    font-family: 'Instrument Serif', serif; 
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+  
+  img { display: block; max-width: 100%; }
+  a { text-decoration: none; color: inherit; }
+  
+  /* Navigation */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 5%;
+    background: rgba(247, 245, 240, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+  
+  .nav--dark {
+    background: rgba(31, 31, 31, 0.95);
+  }
+  
+  .nav--dark .nav__logo,
+  .nav--dark .nav__links a {
+    color: var(--cream);
+  }
+  
+  .nav__logo {
+    font-family: 'Instrument Serif', serif;
+    font-size: 24px;
+    color: var(--charcoal);
+    font-style: italic;
+  }
+  
+  .nav__links {
+    display: flex;
+    gap: 40px;
+  }
+  
+  .nav__links a {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: var(--charcoal);
+    position: relative;
+    transition: color 0.3s ease;
+  }
+  
+  .nav__links a:hover {
+    color: var(--olive);
+  }
+  
+  .nav__links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0;
+    width: 0; height: 1px;
+    background: var(--olive);
+    transition: width 0.3s ease;
+  }
+  
+  .nav__links a:hover::after { width: 100%; }
+  
+  /* Footer */
+  .footer {
+    padding: 60px 5%;
+    background: var(--charcoal);
+    color: var(--cream);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .footer__logo {
+    font-family: 'Instrument Serif', serif;
+    font-size: 24px;
+    font-style: italic;
+  }
+  
+  .footer__links {
+    display: flex;
+    gap: 40px;
+  }
+  
+  .footer__links a {
+    font-size: 14px;
+    color: var(--sand);
+    transition: color 0.3s ease;
+  }
+  
+  .footer__links a:hover {
+    color: var(--cream);
+  }
+  
+  .footer__copy {
+    font-size: 13px;
+    color: var(--stone);
+  }
+  
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 36px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .btn--primary {
+    background: var(--charcoal);
+    color: var(--cream);
+  }
+  
+  .btn--primary:hover {
+    background: var(--olive);
+  }
+  
+  .btn--outline {
+    background: transparent;
+    color: var(--charcoal);
+    border: 1.5px solid var(--charcoal);
+  }
+  
+  .btn--outline:hover {
+    background: var(--charcoal);
+    color: var(--cream);
+  }
+  
+  /* Page Header */
+  .page-header {
+    padding: 160px 5% 80px;
+    background: var(--charcoal);
+    color: var(--cream);
+  }
+  
+  .page-header__tag {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sand);
+    margin-bottom: 16px;
+  }
+  
+  .page-header__title {
+    font-size: clamp(42px, 6vw, 72px);
+    line-height: 1.1;
+    max-width: 800px;
+  }
+  
+  .page-header__desc {
+    font-size: 18px;
+    color: var(--sand);
+    max-width: 600px;
+    margin-top: 24px;
+    line-height: 1.7;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    body { cursor: auto; }
+    .cursor { display: none; }
+    .nav__links { display: none; }
+    .footer { flex-direction: column; gap: 24px; text-align: center; }
+    .footer__links { flex-wrap: wrap; justify-content: center; gap: 20px; }
+  }
+</style>
