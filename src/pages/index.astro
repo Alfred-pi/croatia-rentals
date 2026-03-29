@@ -14,8 +14,8 @@ const destinations = [
 ];
 
 const testimonials = [
-  { text: "An absolutely unforgettable experience. The villa exceeded all expectations.", author: "James & Sarah", from: "London" },
-  { text: "We've traveled the world, but Croatia with Adriatic was truly special.", author: "The Martinez Family", from: "Miami" },
+  { text: "An absolutely unforgettable experience. The villa exceeded all expectations and the attention to detail was remarkable.", author: "James & Sarah Mitchell", from: "London, UK" },
+  { text: "We've traveled the world, but Croatia with Adriatic was truly special. Already planning our return.", author: "The Martinez Family", from: "Miami, USA" },
 ];
 ---
 
@@ -23,41 +23,50 @@ const testimonials = [
   <!-- Hero -->
   <section class="hero">
     <div class="hero__content">
-      <span class="tag">Croatian Riviera</span>
-      <h1>Where the<br/>Adriatic meets<br/>luxury</h1>
-      <p>A curated collection of exceptional villas along Croatia's most coveted coastline.</p>
-      <a href="/croatia-rentals/villas/" class="btn">Explore Villas</a>
+      <span class="tag">Est. 2018 · Croatian Riviera</span>
+      <h1>Where the<br/>Adriatic meets<br/><em>luxury</em></h1>
+      <div class="line"></div>
+      <p>A curated collection of exceptional private villas along Croatia's most coveted coastline.</p>
+      <a href="/croatia-rentals/villas/" class="btn">Explore Collection</a>
     </div>
     <div class="hero__image">
-      <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1400&q=90" alt="Luxury villa" />
+      <div class="hero__image-wrapper">
+        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1400&q=90" alt="Luxury villa" class="parallax-img" />
+      </div>
+      <div class="hero__scroll">
+        <span>Scroll</span>
+        <div class="hero__scroll-line"></div>
+      </div>
     </div>
   </section>
 
   <!-- Intro -->
-  <section class="intro">
+  <section class="intro reveal">
     <div class="intro__number">01</div>
     <div class="intro__content">
+      <span class="tag">Our Philosophy</span>
       <h2>Exceptional properties,<br/>extraordinary experiences</h2>
-      <p>Each villa in our collection has been personally selected for its architectural distinction, prime location, and commitment to guest experience. From historic stone estates in Dubrovnik to contemporary retreats on Hvar.</p>
-      <a href="/croatia-rentals/about/" class="link">Learn more →</a>
+      <div class="line"></div>
+      <p>Each villa in our collection has been personally selected for its architectural distinction, prime location, and commitment to guest experience. We don't just offer accommodation — we curate journeys.</p>
+      <a href="/croatia-rentals/about/" class="link">Discover our story <span>→</span></a>
     </div>
   </section>
 
   <!-- Stats -->
   <section class="stats">
-    <div class="stat">
+    <div class="stat reveal">
       <span class="stat__number">25+</span>
-      <span class="stat__label">Luxury Villas</span>
+      <span class="stat__label">Curated Villas</span>
     </div>
-    <div class="stat">
+    <div class="stat reveal">
       <span class="stat__number">6</span>
       <span class="stat__label">Destinations</span>
     </div>
-    <div class="stat">
-      <span class="stat__number">500+</span>
-      <span class="stat__label">Happy Guests</span>
+    <div class="stat reveal">
+      <span class="stat__number">98%</span>
+      <span class="stat__label">Guest Satisfaction</span>
     </div>
-    <div class="stat">
+    <div class="stat reveal">
       <span class="stat__number">5★</span>
       <span class="stat__label">Average Rating</span>
     </div>
@@ -65,21 +74,32 @@ const testimonials = [
 
   <!-- Villas -->
   <section class="villas">
-    <div class="villas__header">
-      <span class="intro__number">02</span>
-      <h2>Selected Villas</h2>
-      <a href="/croatia-rentals/villas/" class="link">View All →</a>
+    <div class="villas__header reveal">
+      <div class="villas__header-left">
+        <span class="intro__number">02</span>
+        <div>
+          <span class="tag">The Collection</span>
+          <h2>Selected Villas</h2>
+        </div>
+      </div>
+      <a href="/croatia-rentals/villas/" class="link">View All <span>→</span></a>
     </div>
     <div class="villas__grid">
-      {villas.map(villa => (
-        <a href={`/croatia-rentals/villas/${villa.slug}/`} class="villa-card">
+      {villas.map((villa, i) => (
+        <a href={`/croatia-rentals/villas/${villa.slug}/`} class="villa-card reveal" style={`transition-delay: ${i * 100}ms`}>
           <div class="villa-card__image">
             <img src={villa.image} alt={villa.name} loading="lazy" />
+            <div class="villa-card__overlay">
+              <span>View Details</span>
+            </div>
           </div>
           <div class="villa-card__info">
             <span class="tag">{villa.location}</span>
             <h3>{villa.name}</h3>
-            <span class="villa-card__price">From €{villa.price}/night</span>
+            <div class="villa-card__meta">
+              <span class="villa-card__price">From €{villa.price}</span>
+              <span class="villa-card__unit">/ night</span>
+            </div>
           </div>
         </a>
       ))}
@@ -88,17 +108,20 @@ const testimonials = [
 
   <!-- Destinations -->
   <section class="destinations">
-    <div class="destinations__header">
+    <div class="destinations__header reveal">
       <span class="intro__number">03</span>
-      <h2>Destinations</h2>
+      <div>
+        <span class="tag">Explore</span>
+        <h2>Destinations</h2>
+      </div>
     </div>
     <div class="destinations__grid">
-      {destinations.map(dest => (
-        <div class="dest-card">
+      {destinations.map((dest, i) => (
+        <div class="dest-card reveal" style={`transition-delay: ${i * 100}ms`}>
           <img src={dest.image} alt={dest.name} loading="lazy" />
           <div class="dest-card__content">
+            <span class="dest-card__tagline">{dest.tagline}</span>
             <h3>{dest.name}</h3>
-            <p>{dest.tagline}</p>
           </div>
         </div>
       ))}
@@ -108,52 +131,65 @@ const testimonials = [
   <!-- Experience -->
   <section class="experience">
     <div class="experience__image">
-      <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=800&q=85" alt="Croatian coast" />
+      <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=1000&q=85" alt="Croatian coast" class="parallax-img" />
     </div>
-    <div class="experience__content">
+    <div class="experience__content reveal">
       <span class="intro__number">04</span>
-      <h2>More than a stay.<br/>An experience.</h2>
-      <p>From the moment you arrive, our dedicated concierge ensures every detail is perfect. Private chefs, yacht charters, exclusive excursions — whatever you desire, we make it happen.</p>
-      <a href="/croatia-rentals/about/" class="link">Discover our services →</a>
+      <span class="tag">The Experience</span>
+      <h2>More than a stay.<br/><em>A memory.</em></h2>
+      <div class="line"></div>
+      <p>From the moment you arrive, our dedicated concierge ensures every detail is perfect. Private chefs, yacht charters, exclusive excursions — whatever you desire, we orchestrate it seamlessly.</p>
+      <a href="/croatia-rentals/about/" class="link">Discover our services <span>→</span></a>
     </div>
   </section>
 
   <!-- Services -->
   <section class="services">
-    <div class="services__header">
+    <div class="services__header reveal">
       <span class="intro__number">05</span>
-      <h2>Our Services</h2>
+      <div>
+        <span class="tag">White Glove</span>
+        <h2>Our Services</h2>
+      </div>
     </div>
     <div class="services__grid">
-      <div class="service">
+      <div class="service reveal">
+        <span class="service__number">01</span>
         <h4>Concierge</h4>
-        <p>24/7 dedicated support for all your needs during your stay.</p>
+        <p>24/7 dedicated support for reservations, recommendations, and every need during your stay.</p>
       </div>
-      <div class="service">
+      <div class="service reveal">
+        <span class="service__number">02</span>
         <h4>Private Chef</h4>
-        <p>Authentic Croatian cuisine prepared in the comfort of your villa.</p>
+        <p>Authentic Croatian cuisine prepared by acclaimed chefs in the comfort of your villa.</p>
       </div>
-      <div class="service">
+      <div class="service reveal">
+        <span class="service__number">03</span>
         <h4>Yacht Charter</h4>
-        <p>Explore the islands aboard a luxury private yacht.</p>
+        <p>Explore hidden islands and secluded coves aboard a luxury private yacht.</p>
       </div>
-      <div class="service">
+      <div class="service reveal">
+        <span class="service__number">04</span>
         <h4>Transfers</h4>
-        <p>Seamless airport pickups and luxury transportation.</p>
+        <p>Seamless airport pickups and luxury transportation throughout your journey.</p>
       </div>
     </div>
   </section>
 
   <!-- Testimonials -->
   <section class="testimonials">
-    <div class="testimonials__header">
+    <div class="testimonials__header reveal">
       <span class="intro__number">06</span>
-      <h2>What Our Guests Say</h2>
+      <div>
+        <span class="tag">Voices</span>
+        <h2>Guest Experiences</h2>
+      </div>
     </div>
     <div class="testimonials__grid">
-      {testimonials.map(t => (
-        <div class="testimonial">
-          <p>"{t.text}"</p>
+      {testimonials.map((t, i) => (
+        <div class="testimonial reveal" style={`transition-delay: ${i * 150}ms`}>
+          <div class="testimonial__quote">"</div>
+          <p>{t.text}</p>
           <div class="testimonial__author">
             <strong>{t.author}</strong>
             <span>{t.from}</span>
@@ -165,23 +201,27 @@ const testimonials = [
 
   <!-- Instagram -->
   <section class="instagram">
-    <div class="instagram__header">
+    <div class="instagram__header reveal">
       <span class="intro__number">07</span>
-      <h2>Follow Our Journey</h2>
-      <a href="https://instagram.com" target="_blank" class="link">@adriatic.villas →</a>
+      <div>
+        <span class="tag">Follow Along</span>
+        <h2>@adriatic.villas</h2>
+      </div>
     </div>
     <div class="instagram__grid">
-      <div class="insta-img"><img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&q=80" alt="" loading="lazy" /></div>
-      <div class="insta-img"><img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=400&q=80" alt="" loading="lazy" /></div>
-      <div class="insta-img"><img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=400&q=80" alt="" loading="lazy" /></div>
-      <div class="insta-img"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&q=80" alt="" loading="lazy" /></div>
+      <div class="insta-img reveal"><img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&q=80" alt="" loading="lazy" /></div>
+      <div class="insta-img reveal"><img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=400&q=80" alt="" loading="lazy" /></div>
+      <div class="insta-img reveal"><img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=400&q=80" alt="" loading="lazy" /></div>
+      <div class="insta-img reveal"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&q=80" alt="" loading="lazy" /></div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="cta">
+  <section class="cta reveal">
+    <span class="tag">Ready?</span>
     <h2>Begin your journey</h2>
-    <p>Let us help you find the perfect Croatian retreat.</p>
+    <div class="line" style="margin: 24px auto;"></div>
+    <p>Let us help you discover the perfect Croatian retreat.</p>
     <a href="/croatia-rentals/contact/" class="btn btn--fill">Get in Touch</a>
   </section>
 </Layout>
@@ -190,7 +230,7 @@ const testimonials = [
   /* Hero */
   .hero {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1.2fr;
     min-height: 100vh;
     padding-top: 80px;
   }
@@ -203,20 +243,31 @@ const testimonials = [
   }
   
   .hero__content h1 {
-    font-size: clamp(40px, 6vw, 72px);
-    line-height: 1.1;
-    margin: 24px 0;
+    font-size: clamp(44px, 6vw, 76px);
+    line-height: 1.05;
+    margin: 20px 0;
+  }
+  
+  .hero__content h1 em {
+    font-style: italic;
+    color: var(--gold);
   }
   
   .hero__content p {
     font-size: 16px;
     color: var(--gray);
-    max-width: 400px;
+    max-width: 380px;
     margin-bottom: 48px;
-    line-height: 1.8;
+    line-height: 1.9;
   }
   
   .hero__image {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .hero__image-wrapper {
+    height: 100%;
     overflow: hidden;
   }
   
@@ -226,102 +277,153 @@ const testimonials = [
     object-fit: cover;
   }
   
+  .hero__scroll {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    color: var(--white);
+  }
+  
+  .hero__scroll span {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+  }
+  
+  .hero__scroll-line {
+    width: 1px;
+    height: 60px;
+    background: var(--white);
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+  
+  @keyframes scrollLine {
+    0%, 100% { transform: scaleY(1); opacity: 1; }
+    50% { transform: scaleY(0.5); opacity: 0.5; }
+  }
+  
   /* Intro */
   .intro {
     display: grid;
-    grid-template-columns: 100px 1fr;
+    grid-template-columns: 80px 1fr;
     gap: 60px;
-    padding: 160px 10%;
-    max-width: 1200px;
+    padding: 180px 10%;
+    max-width: 1100px;
     margin: 0 auto;
   }
   
   .intro__number {
     font-family: 'Playfair Display', serif;
-    font-size: 14px;
+    font-size: 13px;
     color: var(--gold);
-    padding-top: 8px;
+    padding-top: 4px;
   }
   
   .intro__content h2 {
-    font-size: clamp(28px, 4vw, 42px);
-    margin-bottom: 24px;
-    line-height: 1.3;
+    font-size: clamp(32px, 4vw, 48px);
+    margin-bottom: 0;
+    line-height: 1.2;
   }
   
   .intro__content p {
     font-size: 16px;
     color: var(--gray);
-    line-height: 1.9;
-    max-width: 600px;
-    margin-bottom: 24px;
+    line-height: 2;
+    max-width: 540px;
+    margin-bottom: 32px;
   }
   
   .link {
-    font-size: 14px;
+    font-size: 13px;
     color: var(--black);
-    transition: color 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+  }
+  
+  .link span {
+    transition: transform 0.3s;
   }
   
   .link:hover {
     color: var(--gold);
   }
   
+  .link:hover span {
+    transform: translateX(4px);
+  }
+  
   /* Stats */
   .stats {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    border-top: 1px solid var(--light);
-    border-bottom: 1px solid var(--light);
+    border-top: 1px solid rgba(0,0,0,0.08);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
   }
   
   .stat {
-    padding: 60px 40px;
+    padding: 80px 40px;
     text-align: center;
-    border-right: 1px solid var(--light);
+    border-right: 1px solid rgba(0,0,0,0.08);
+    transition: background 0.5s;
   }
   
-  .stat:last-child {
-    border-right: none;
+  .stat:last-child { border-right: none; }
+  
+  .stat:hover {
+    background: var(--light);
   }
   
   .stat__number {
     display: block;
     font-family: 'Playfair Display', serif;
-    font-size: 48px;
-    margin-bottom: 8px;
+    font-size: 56px;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
   }
   
   .stat__label {
-    font-size: 13px;
+    font-size: 11px;
     color: var(--gray);
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
   }
   
   /* Villas */
   .villas {
-    padding: 120px 5%;
+    padding: 140px 5%;
     background: var(--light);
   }
   
   .villas__header {
     display: flex;
-    align-items: center;
-    gap: 24px;
-    margin-bottom: 60px;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 80px;
     padding: 0 5%;
   }
   
+  .villas__header-left {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  
   .villas__header h2 {
-    font-size: 28px;
-    flex: 1;
+    font-size: 32px;
+    margin-top: 8px;
   }
   
   .villas__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
+    gap: 40px;
     padding: 0 5%;
   }
   
@@ -330,48 +432,92 @@ const testimonials = [
   }
   
   .villa-card__image {
-    aspect-ratio: 4/5;
+    position: relative;
+    aspect-ratio: 3/4;
     overflow: hidden;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
   }
   
   .villa-card__image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s ease;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .villa-card:hover .villa-card__image img {
-    transform: scale(1.05);
+    transform: scale(1.08);
+  }
+  
+  .villa-card__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.5s;
+  }
+  
+  .villa-card__overlay span {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--white);
+    padding: 14px 28px;
+    border: 1px solid var(--white);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s;
+  }
+  
+  .villa-card:hover .villa-card__overlay {
+    background: rgba(0,0,0,0.3);
+  }
+  
+  .villa-card:hover .villa-card__overlay span {
+    opacity: 1;
+    transform: translateY(0);
   }
   
   .villa-card__info h3 {
-    font-size: 22px;
-    margin: 8px 0;
+    font-size: 24px;
+    margin: 10px 0 12px;
+  }
+  
+  .villa-card__meta {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
   }
   
   .villa-card__price {
+    font-size: 16px;
+    font-weight: 400;
+  }
+  
+  .villa-card__unit {
     font-size: 13px;
     color: var(--gray);
   }
   
   /* Destinations */
   .destinations {
-    padding: 120px 10%;
+    padding: 140px 10%;
     max-width: 1400px;
     margin: 0 auto;
   }
   
   .destinations__header {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 24px;
-    margin-bottom: 60px;
+    margin-bottom: 80px;
   }
   
   .destinations__header h2 {
-    font-size: 28px;
+    font-size: 32px;
+    margin-top: 8px;
   }
   
   .destinations__grid {
@@ -384,17 +530,18 @@ const testimonials = [
     position: relative;
     aspect-ratio: 3/4;
     overflow: hidden;
+    cursor: pointer;
   }
   
   .dest-card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s ease;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .dest-card:hover img {
-    transform: scale(1.05);
+    transform: scale(1.08);
   }
   
   .dest-card__content {
@@ -402,26 +549,28 @@ const testimonials = [
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 32px;
-    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    padding: 40px;
+    background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
     color: var(--white);
   }
   
-  .dest-card h3 {
-    font-size: 24px;
-    margin-bottom: 4px;
+  .dest-card__tagline {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.7;
   }
   
-  .dest-card p {
-    font-size: 14px;
-    opacity: 0.8;
+  .dest-card h3 {
+    font-size: 28px;
+    margin-top: 8px;
   }
   
   /* Experience */
   .experience {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-height: 80vh;
+    grid-template-columns: 1.2fr 1fr;
+    min-height: 90vh;
   }
   
   .experience__image {
@@ -443,35 +592,41 @@ const testimonials = [
   }
   
   .experience__content h2 {
-    font-size: clamp(28px, 4vw, 42px);
-    margin: 24px 0;
-    line-height: 1.3;
+    font-size: clamp(32px, 4vw, 48px);
+    margin: 16px 0 0;
+    line-height: 1.2;
+  }
+  
+  .experience__content h2 em {
+    font-style: italic;
+    color: var(--gold);
   }
   
   .experience__content p {
     font-size: 16px;
     color: var(--gray);
-    line-height: 1.9;
-    max-width: 500px;
-    margin-bottom: 24px;
+    line-height: 2;
+    max-width: 440px;
+    margin-bottom: 32px;
   }
   
   /* Services */
   .services {
-    padding: 120px 10%;
+    padding: 140px 10%;
     max-width: 1200px;
     margin: 0 auto;
   }
   
   .services__header {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 24px;
-    margin-bottom: 60px;
+    margin-bottom: 80px;
   }
   
   .services__header h2 {
-    font-size: 28px;
+    font-size: 32px;
+    margin-top: 8px;
   }
   
   .services__grid {
@@ -480,34 +635,47 @@ const testimonials = [
     gap: 48px;
   }
   
+  .service {
+    padding-top: 24px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+  }
+  
+  .service__number {
+    font-size: 11px;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 20px;
+  }
+  
   .service h4 {
     font-family: 'Inter', sans-serif;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 500;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
   }
   
   .service p {
     font-size: 14px;
     color: var(--gray);
-    line-height: 1.7;
+    line-height: 1.8;
   }
   
   /* Testimonials */
   .testimonials {
-    padding: 120px 10%;
+    padding: 140px 10%;
     background: var(--light);
   }
   
   .testimonials__header {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 24px;
-    margin-bottom: 60px;
+    margin-bottom: 80px;
   }
   
   .testimonials__header h2 {
-    font-size: 28px;
+    font-size: 32px;
+    margin-top: 8px;
   }
   
   .testimonials__grid {
@@ -518,21 +686,34 @@ const testimonials = [
   }
   
   .testimonial {
-    padding: 40px;
+    padding: 48px;
     background: var(--white);
-    border-left: 3px solid var(--gold);
+    position: relative;
+  }
+  
+  .testimonial__quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 120px;
+    color: var(--gold);
+    opacity: 0.2;
+    position: absolute;
+    top: 10px;
+    left: 30px;
+    line-height: 1;
   }
   
   .testimonial p {
-    font-size: 18px;
-    font-style: italic;
-    line-height: 1.8;
-    margin-bottom: 24px;
+    font-size: 17px;
+    line-height: 1.9;
+    margin-bottom: 32px;
+    position: relative;
+    z-index: 1;
   }
   
   .testimonial__author strong {
     display: block;
     font-weight: 500;
+    margin-bottom: 4px;
   }
   
   .testimonial__author span {
@@ -542,20 +723,20 @@ const testimonials = [
   
   /* Instagram */
   .instagram {
-    padding: 120px 5%;
+    padding: 140px 5%;
   }
   
   .instagram__header {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 24px;
-    margin-bottom: 48px;
+    margin-bottom: 60px;
     padding: 0 5%;
   }
   
   .instagram__header h2 {
-    font-size: 28px;
-    flex: 1;
+    font-size: 32px;
+    margin-top: 8px;
   }
   
   .instagram__grid {
@@ -573,55 +754,56 @@ const testimonials = [
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s ease;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: grayscale(20%);
   }
   
   .insta-img:hover img {
     transform: scale(1.1);
+    filter: grayscale(0%);
   }
   
   /* CTA */
   .cta {
     text-align: center;
-    padding: 160px 5%;
+    padding: 180px 5%;
     background: var(--light);
   }
   
   .cta h2 {
-    font-size: clamp(32px, 5vw, 48px);
-    margin-bottom: 16px;
+    font-size: clamp(36px, 5vw, 56px);
+    margin: 16px 0 0;
   }
   
   .cta p {
     font-size: 16px;
     color: var(--gray);
-    margin-bottom: 40px;
+    margin-bottom: 48px;
   }
   
   /* Responsive */
   @media (max-width: 1024px) {
-    .hero {
-      grid-template-columns: 1fr;
-      min-height: auto;
-    }
-    .hero__content { padding: 120px 5% 60px; }
-    .hero__image { height: 60vh; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero__content { padding: 140px 5% 80px; }
+    .hero__image { height: 70vh; }
+    .hero__scroll { display: none; }
     .stats { grid-template-columns: repeat(2, 1fr); }
-    .stat { border-bottom: 1px solid var(--light); }
-    .villas__grid { grid-template-columns: 1fr; gap: 48px; }
-    .destinations__grid { grid-template-columns: 1fr; }
+    .stat { border-bottom: 1px solid rgba(0,0,0,0.08); }
+    .villas__grid, .destinations__grid { grid-template-columns: 1fr; }
     .experience { grid-template-columns: 1fr; }
-    .experience__image { height: 50vh; }
+    .experience__image { height: 60vh; }
     .services__grid { grid-template-columns: repeat(2, 1fr); }
     .testimonials__grid { grid-template-columns: 1fr; }
     .instagram__grid { grid-template-columns: repeat(2, 1fr); }
   }
   
   @media (max-width: 768px) {
-    .intro { grid-template-columns: 1fr; gap: 24px; padding: 80px 5%; }
-    .services { padding: 80px 5%; }
+    .intro { grid-template-columns: 1fr; gap: 24px; padding: 100px 5%; }
+    .intro__number { display: none; }
+    .services { padding: 100px 5%; }
     .services__grid { grid-template-columns: 1fr; }
     .stats { grid-template-columns: 1fr; }
     .stat { border-right: none; }
+    .villas__header { flex-direction: column; align-items: flex-start; gap: 24px; }
   }
 </style>
