@@ -83,8 +83,18 @@ const { title, description = "Luxury Croatian villas" } = Astro.props;
           entry.target.classList.add('visible');
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.05, rootMargin: '0px 0px -50px 0px' });
     reveals.forEach(el => observer.observe(el));
+    
+    // Initial reveal for elements already in viewport
+    setTimeout(() => {
+      reveals.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.9) {
+          el.classList.add('visible');
+        }
+      });
+    }, 100);
     
     // Smooth parallax on images
     document.querySelectorAll('.parallax-img').forEach(img => {
@@ -343,8 +353,8 @@ const { title, description = "Luxury Croatian villas" } = Astro.props;
   /* Reveal animations */
   .reveal {
     opacity: 0;
-    transform: translateY(40px);
-    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
   }
   
   .reveal.visible {
