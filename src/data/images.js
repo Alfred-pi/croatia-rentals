@@ -42,10 +42,10 @@ export const images = {
   seaView3: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1200&q=85',
   
   // Croatia destinations
-  dubrovnik1: 'https://images.unsplash.com/photo-1555990538-1e15d5b97d8d?w=1200&q=85',
+  dubrovnik1: 'https://images.unsplash.com/photo-1580137189272-c9379f8864fd?w=1200&q=85',
   dubrovnik2: 'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=1200&q=85',
   hvar1: 'https://images.unsplash.com/photo-1534008897995-27a23e859048?w=1200&q=85',
-  split1: 'https://images.unsplash.com/photo-1592499453756-ee2368f632ee?w=1200&q=85',
+  split1: 'https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=1200&q=85',
   korcula1: 'https://images.unsplash.com/photo-1580137189272-c9379f8864fd?w=1200&q=85',
   
   // Lifestyle & experiences
