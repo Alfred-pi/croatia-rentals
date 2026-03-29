@@ -2,147 +2,391 @@
 import Layout from '../../layouts/Layout.astro';
 
 const villas = [
-  { name: 'Villa Pietra', location: 'Dubrovnik', beds: 4, price: 890, image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=85', slug: 'villa-pietra' },
-  { name: 'Casa Blu', location: 'Hvar', beds: 5, price: 1200, image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=85', slug: 'casa-blu' },
-  { name: 'Villa Oliva', location: 'Split', beds: 3, price: 750, image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=85', slug: 'villa-oliva' },
-  { name: 'Villa Tramonto', location: 'Korčula', beds: 4, price: 950, image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=85', slug: 'villa-tramonto' },
-  { name: 'Casa Mediterra', location: 'Rovinj', beds: 6, price: 1450, image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=85', slug: 'casa-mediterra' },
-  { name: 'Villa Mare', location: 'Zadar', beds: 3, price: 680, image: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=85', slug: 'villa-mare' },
+  { name: 'Villa Pietra', location: 'Dubrovnik', price: 890, beds: 4, baths: 3, guests: 8, image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=85', slug: 'villa-pietra', featured: true },
+  { name: 'Casa Blu', location: 'Hvar', price: 1200, beds: 5, baths: 4, guests: 10, image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=85', slug: 'casa-blu', featured: true },
+  { name: 'Villa Oliva', location: 'Split', price: 750, beds: 3, baths: 2, guests: 6, image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=85', slug: 'villa-oliva', featured: false },
+  { name: 'Villa Tramonto', location: 'Korčula', price: 980, beds: 4, baths: 3, guests: 8, image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=85', slug: 'villa-tramonto', featured: false },
+  { name: 'Casa Mediterra', location: 'Zadar', price: 650, beds: 3, baths: 2, guests: 6, image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=85', slug: 'casa-mediterra', featured: false },
+  { name: 'Villa Mare', location: 'Brač', price: 1450, beds: 6, baths: 5, guests: 12, image: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=85', slug: 'villa-mare', featured: true },
 ];
 ---
 
 <Layout title="Villas — ADRIATIC">
-  <section class="page-header">
-    <span class="tag">Collection</span>
-    <h1>Our Villas</h1>
-    <p>Six exceptional properties along Croatia's Adriatic coast.</p>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__content reveal">
+      <span class="tag">The Collection</span>
+      <h1>Our <em>curated</em><br/>selection</h1>
+      <div class="line"></div>
+      <p>Each property has been personally selected for its exceptional character, prime location, and commitment to guest experience.</p>
+    </div>
   </section>
 
-  <section class="villas-list">
-    {villas.map((villa, i) => (
-      <a href={`/croatia-rentals/villas/${villa.slug}/`} class="villa-row">
-        <div class="villa-row__image">
-          <img src={villa.image} alt={villa.name} loading="lazy" />
-        </div>
-        <div class="villa-row__content">
-          <span class="villa-row__number">0{i + 1}</span>
-          <div class="villa-row__info">
-            <span class="tag">{villa.location}</span>
-            <h2>{villa.name}</h2>
-            <div class="villa-row__details">
-              <span>{villa.beds} bedrooms</span>
-              <span>From €{villa.price}/night</span>
+  <!-- Filters -->
+  <section class="filters reveal">
+    <div class="filter__group">
+      <span class="filter__label">Location</span>
+      <select class="filter__select">
+        <option value="">All Destinations</option>
+        <option value="dubrovnik">Dubrovnik</option>
+        <option value="hvar">Hvar</option>
+        <option value="split">Split</option>
+        <option value="korcula">Korčula</option>
+        <option value="zadar">Zadar</option>
+        <option value="brac">Brač</option>
+      </select>
+    </div>
+    <div class="filter__group">
+      <span class="filter__label">Guests</span>
+      <select class="filter__select">
+        <option value="">Any</option>
+        <option value="2">2+ guests</option>
+        <option value="4">4+ guests</option>
+        <option value="6">6+ guests</option>
+        <option value="10">10+ guests</option>
+      </select>
+    </div>
+    <div class="filter__group">
+      <span class="filter__label">Price</span>
+      <select class="filter__select">
+        <option value="">Any Budget</option>
+        <option value="500-800">€500 – €800</option>
+        <option value="800-1200">€800 – €1,200</option>
+        <option value="1200+">€1,200+</option>
+      </select>
+    </div>
+  </section>
+
+  <!-- Villas Grid -->
+  <section class="villas">
+    <div class="villas__header reveal">
+      <span class="villas__count">{villas.length} properties</span>
+      <span class="villas__sort">Sort by: <strong>Featured</strong></span>
+    </div>
+    
+    <div class="villas__grid">
+      {villas.map((villa, i) => (
+        <a href={`/croatia-rentals/villas/${villa.slug}/`} class="villa-card reveal" style={`transition-delay: ${i * 80}ms`}>
+          <div class="villa-card__image">
+            <img src={villa.image} alt={villa.name} loading="lazy" />
+            {villa.featured && <span class="villa-card__badge">Featured</span>}
+            <div class="villa-card__overlay">
+              <span>View Property</span>
             </div>
           </div>
-          <span class="villa-row__arrow">→</span>
-        </div>
-      </a>
-    ))}
+          <div class="villa-card__info">
+            <div class="villa-card__top">
+              <span class="tag">{villa.location}</span>
+              <span class="villa-card__number">{String(i + 1).padStart(2, '0')}</span>
+            </div>
+            <h3>{villa.name}</h3>
+            <div class="villa-card__specs">
+              <span>{villa.beds} beds</span>
+              <span class="dot"></span>
+              <span>{villa.baths} baths</span>
+              <span class="dot"></span>
+              <span>{villa.guests} guests</span>
+            </div>
+            <div class="villa-card__footer">
+              <div class="villa-card__price">
+                <span class="price">€{villa.price}</span>
+                <span class="unit">/ night</span>
+              </div>
+              <span class="villa-card__arrow">→</span>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta reveal">
+    <span class="tag">Can't find what you're looking for?</span>
+    <h2>Let us help</h2>
+    <div class="line" style="margin: 24px auto;"></div>
+    <p>Our concierge team can help you find the perfect property for your needs.</p>
+    <a href="/croatia-rentals/contact/" class="btn btn--fill">Get in Touch</a>
   </section>
 </Layout>
 
 <style>
-  .page-header {
-    padding: 180px 5% 100px;
+  .hero {
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
+    padding: 160px 5% 80px;
+    background: var(--light);
   }
   
-  .page-header h1 {
-    font-size: clamp(40px, 6vw, 64px);
+  .hero h1 {
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 1.1;
     margin: 16px 0;
   }
   
-  .page-header p {
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  
+  .hero p {
     font-size: 16px;
+    color: var(--gray);
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.9;
+  }
+  
+  /* Filters */
+  .filters {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    padding: 48px 5%;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+  
+  .filter__group {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .filter__label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
     color: var(--gray);
   }
   
-  .villas-list {
-    padding: 0 5% 100px;
-    max-width: 1400px;
-    margin: 0 auto;
+  .filter__select {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    padding: 12px 40px 12px 16px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: var(--white);
+    cursor: pointer;
+    -webkit-appearance: none;
+    border-radius: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    transition: border-color 0.3s;
   }
   
-  .villa-row {
-    display: grid;
-    grid-template-columns: 400px 1fr;
-    gap: 60px;
+  .filter__select:focus {
+    outline: none;
+    border-color: var(--black);
+  }
+  
+  /* Villas */
+  .villas {
+    padding: 80px 5%;
+  }
+  
+  .villas__header {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    padding: 60px 0;
-    border-bottom: 1px solid var(--light);
+    padding: 0 5%;
+    margin-bottom: 60px;
   }
   
-  .villa-row:first-child {
-    border-top: 1px solid var(--light);
+  .villas__count {
+    font-size: 13px;
+    color: var(--gray);
   }
   
-  .villa-row__image {
-    aspect-ratio: 4/3;
+  .villas__sort {
+    font-size: 13px;
+    color: var(--gray);
+  }
+  
+  .villas__sort strong {
+    color: var(--black);
+    font-weight: 500;
+  }
+  
+  .villas__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px 32px;
+    padding: 0 5%;
+  }
+  
+  .villa-card {
+    display: block;
+  }
+  
+  .villa-card__image {
+    position: relative;
+    aspect-ratio: 4/5;
     overflow: hidden;
+    margin-bottom: 24px;
   }
   
-  .villa-row__image img {
+  .villa-card__image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s ease;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
-  .villa-row:hover .villa-row__image img {
-    transform: scale(1.05);
+  .villa-card:hover .villa-card__image img {
+    transform: scale(1.08);
   }
   
-  .villa-row__content {
+  .villa-card__badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    padding: 8px 16px;
+    background: var(--gold);
+    color: var(--white);
+  }
+  
+  .villa-card__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0);
     display: flex;
     align-items: center;
-    gap: 48px;
+    justify-content: center;
+    transition: background 0.5s;
   }
   
-  .villa-row__number {
-    font-family: 'Playfair Display', serif;
-    font-size: 14px;
-    color: var(--gold);
+  .villa-card__overlay span {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--white);
+    padding: 14px 28px;
+    border: 1px solid var(--white);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s;
   }
   
-  .villa-row__info {
-    flex: 1;
+  .villa-card:hover .villa-card__overlay {
+    background: rgba(0,0,0,0.3);
   }
   
-  .villa-row__info h2 {
-    font-size: 32px;
-    margin: 8px 0 16px;
-    transition: color 0.3s;
+  .villa-card:hover .villa-card__overlay span {
+    opacity: 1;
+    transform: translateY(0);
   }
   
-  .villa-row:hover .villa-row__info h2 {
-    color: var(--gold);
-  }
-  
-  .villa-row__details {
+  .villa-card__top {
     display: flex;
-    gap: 32px;
-    font-size: 14px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  
+  .villa-card__number {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    color: var(--gold);
+  }
+  
+  .villa-card__info h3 {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+  
+  .villa-card__specs {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--gray);
+    margin-bottom: 20px;
+  }
+  
+  .dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--gray);
+    opacity: 0.5;
+  }
+  
+  .villa-card__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16px;
+    border-top: 1px solid rgba(0,0,0,0.08);
+  }
+  
+  .villa-card__price .price {
+    font-size: 18px;
+    font-weight: 500;
+  }
+  
+  .villa-card__price .unit {
+    font-size: 13px;
     color: var(--gray);
   }
   
-  .villa-row__arrow {
-    font-size: 24px;
-    opacity: 0;
-    transform: translateX(-10px);
-    transition: all 0.3s;
+  .villa-card__arrow {
+    font-size: 18px;
+    transition: transform 0.3s;
   }
   
-  .villa-row:hover .villa-row__arrow {
-    opacity: 1;
-    transform: translateX(0);
+  .villa-card:hover .villa-card__arrow {
+    transform: translateX(4px);
   }
   
-  @media (max-width: 900px) {
-    .villa-row {
-      grid-template-columns: 1fr;
+  /* CTA */
+  .cta {
+    text-align: center;
+    padding: 140px 5%;
+    background: var(--light);
+  }
+  
+  .cta h2 {
+    font-size: clamp(32px, 4vw, 48px);
+    margin: 16px 0 0;
+  }
+  
+  .cta p {
+    font-size: 16px;
+    color: var(--gray);
+    margin-bottom: 48px;
+  }
+  
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .villas__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .filters {
+      flex-wrap: wrap;
       gap: 24px;
     }
-    .villa-row__content { gap: 24px; }
-    .villa-row__arrow { display: none; }
+  }
+  
+  @media (max-width: 768px) {
+    .villas__grid {
+      grid-template-columns: 1fr;
+    }
+    .filters {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 16px;
+    }
+    .filter__group {
+      justify-content: space-between;
+    }
+    .filter__select {
+      flex: 1;
+    }
   }
 </style>

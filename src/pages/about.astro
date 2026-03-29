@@ -3,73 +3,145 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="About — ADRIATIC">
-  <section class="page-header">
-    <span class="tag">About</span>
-    <h1>Our Story</h1>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__content reveal">
+      <span class="tag">Our Story</span>
+      <h1>A passion for<br/><em>exceptional</em> places</h1>
+      <div class="line"></div>
+    </div>
   </section>
 
+  <!-- Story -->
   <section class="story">
-    <div class="story__image">
-      <img src="https://images.unsplash.com/photo-1555990538-1e15d5b97d8d?w=800&q=85" alt="Croatian coast" />
+    <div class="story__image reveal">
+      <img src="https://images.unsplash.com/photo-1555990538-1e15d5b97d8d?w=800&q=85" alt="Dubrovnik coastline" />
     </div>
-    <div class="story__content">
-      <p class="lead">ADRIATIC was founded with a simple belief: that Croatia's extraordinary coastline deserves an equally exceptional approach to hospitality.</p>
-      <p>We curate a small collection of remarkable private villas, each selected for architectural distinction, prime location, and uncompromising quality.</p>
-      <p>Our team handles every detail—from private chefs to yacht charters—so your only concern is where to watch the sunset.</p>
-      <p>Based in Dubrovnik, we bring deep local knowledge and personal relationships to create experiences that reveal the authentic character of the Adriatic.</p>
+    <div class="story__content reveal">
+      <span class="intro__number">01</span>
+      <span class="tag">The Beginning</span>
+      <h2>Born from a love<br/>of the Adriatic</h2>
+      <div class="line"></div>
+      <p>Founded in 2018, Adriatic was born from a simple belief: that the Croatian coast deserves to be experienced in the most extraordinary way possible.</p>
+      <p>What began as a personal collection of favorite properties has grown into Croatia's most prestigious portfolio of luxury villas — each one handpicked for its unique character, exceptional location, and unwavering commitment to guest experience.</p>
     </div>
   </section>
 
+  <!-- Values -->
   <section class="values">
-    <div class="values__header">
-      <span class="intro__number">01</span>
-      <h2>Our Approach</h2>
+    <div class="values__header reveal">
+      <span class="intro__number">02</span>
+      <div>
+        <span class="tag">Philosophy</span>
+        <h2>What We Believe</h2>
+      </div>
     </div>
     <div class="values__grid">
-      <div class="value">
-        <h4>Curated Excellence</h4>
-        <p>We personally visit and vet every property. Only the exceptional make our collection.</p>
+      <div class="value reveal">
+        <span class="value__number">01</span>
+        <h3>Authenticity</h3>
+        <p>Every property tells a story. We seek out homes with soul — historic stone villas, architect-designed retreats, family estates passed through generations.</p>
       </div>
-      <div class="value">
-        <h4>Local Expertise</h4>
-        <p>Our Dubrovnik-based team knows every hidden beach, restaurant, and experience worth having.</p>
+      <div class="value reveal">
+        <span class="value__number">02</span>
+        <h3>Discretion</h3>
+        <p>Privacy is paramount. Our guests are discerning individuals who value tranquility and exclusivity above all else.</p>
       </div>
-      <div class="value">
-        <h4>Personal Service</h4>
-        <p>One dedicated concierge for your entire stay. Available 24/7, for anything you need.</p>
+      <div class="value reveal">
+        <span class="value__number">03</span>
+        <h3>Excellence</h3>
+        <p>From the thread count of your linens to the vintage of your welcome champagne, every detail is considered and curated.</p>
+      </div>
+      <div class="value reveal">
+        <span class="value__number">04</span>
+        <h3>Connection</h3>
+        <p>We believe in meaningful travel — experiences that connect you to place, culture, and the people who make Croatia extraordinary.</p>
       </div>
     </div>
   </section>
 
-  <section class="cta">
-    <h2>Ready to experience<br/>the Adriatic?</h2>
-    <a href="/croatia-rentals/contact/" class="btn">Get in Touch</a>
+  <!-- Team -->
+  <section class="team">
+    <div class="team__content reveal">
+      <span class="intro__number">03</span>
+      <span class="tag">The Team</span>
+      <h2>Local expertise,<br/><em>global standards</em></h2>
+      <div class="line"></div>
+      <p>Our team combines deep local knowledge with international hospitality experience. From property selection to guest services, we bring the same meticulous attention to detail that defines the world's finest hotels.</p>
+      <p>Based in Dubrovnik with representatives across the coast, we're always nearby — yet always invisible until you need us.</p>
+    </div>
+    <div class="team__image reveal">
+      <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=800&q=85" alt="Croatian coast" />
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats">
+    <div class="stat reveal">
+      <span class="stat__number">2018</span>
+      <span class="stat__label">Founded</span>
+    </div>
+    <div class="stat reveal">
+      <span class="stat__number">25+</span>
+      <span class="stat__label">Properties</span>
+    </div>
+    <div class="stat reveal">
+      <span class="stat__number">6</span>
+      <span class="stat__label">Destinations</span>
+    </div>
+    <div class="stat reveal">
+      <span class="stat__number">98%</span>
+      <span class="stat__label">Return Guests</span>
+    </div>
+  </section>
+
+  <!-- Quote -->
+  <section class="quote reveal">
+    <div class="quote__mark">"</div>
+    <blockquote>The Adriatic has a way of staying with you. Our mission is to ensure that every guest leaves with memories that last a lifetime.</blockquote>
+    <cite>— The Adriatic Team</cite>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta reveal">
+    <span class="tag">Ready?</span>
+    <h2>Begin your journey</h2>
+    <div class="line" style="margin: 24px auto;"></div>
+    <p>Let us help you discover the perfect Croatian retreat.</p>
+    <a href="/croatia-rentals/contact/" class="btn btn--fill">Get in Touch</a>
   </section>
 </Layout>
 
 <style>
-  .page-header {
-    padding: 180px 5% 80px;
+  .hero {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
+    padding: 160px 5% 80px;
+    background: var(--light);
   }
   
-  .page-header h1 {
-    font-size: clamp(40px, 6vw, 64px);
-    margin-top: 16px;
+  .hero h1 {
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 1.1;
+    margin: 16px 0;
   }
   
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  
+  /* Story */
   .story {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    padding: 80px 10%;
-    max-width: 1400px;
-    margin: 0 auto;
-    align-items: center;
+    min-height: 80vh;
   }
   
   .story__image {
-    aspect-ratio: 4/5;
     overflow: hidden;
   }
   
@@ -79,74 +151,232 @@ import Layout from '../layouts/Layout.astro';
     object-fit: cover;
   }
   
-  .story__content .lead {
-    font-size: 22px;
-    line-height: 1.5;
-    margin-bottom: 24px;
+  .story__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 10%;
+  }
+  
+  .story__content h2 {
+    font-size: clamp(28px, 3.5vw, 42px);
+    margin: 16px 0 0;
+    line-height: 1.2;
   }
   
   .story__content p {
     font-size: 16px;
     color: var(--gray);
-    line-height: 1.9;
-    margin-bottom: 16px;
+    line-height: 2;
+    margin-bottom: 20px;
+    max-width: 480px;
   }
   
+  .intro__number {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    color: var(--gold);
+    margin-bottom: 16px;
+    display: block;
+  }
+  
+  /* Values */
   .values {
-    padding: 100px 10%;
+    padding: 140px 10%;
     background: var(--light);
   }
   
   .values__header {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 24px;
-    margin-bottom: 60px;
+    margin-bottom: 80px;
   }
   
   .values__header h2 {
-    font-size: 28px;
-  }
-  
-  .intro__number {
-    font-family: 'Playfair Display', serif;
-    font-size: 14px;
-    color: var(--gold);
+    font-size: 32px;
+    margin-top: 8px;
   }
   
   .values__grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 60px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 48px;
   }
   
-  .value h4 {
-    font-family: 'Inter', sans-serif;
-    font-size: 16px;
-    font-weight: 500;
+  .value {
+    padding-top: 24px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+  }
+  
+  .value__number {
+    font-size: 11px;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 20px;
+  }
+  
+  .value h3 {
+    font-size: 20px;
     margin-bottom: 16px;
   }
   
   .value p {
-    font-size: 15px;
+    font-size: 14px;
     color: var(--gray);
-    line-height: 1.8;
+    line-height: 1.9;
   }
   
-  .cta {
-    text-align: center;
-    padding: 160px 5%;
+  /* Team */
+  .team {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 80vh;
   }
   
-  .cta h2 {
-    font-size: clamp(32px, 5vw, 48px);
-    margin-bottom: 40px;
+  .team__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 10%;
+    order: 1;
+  }
+  
+  .team__image {
+    overflow: hidden;
+    order: 2;
+  }
+  
+  .team__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .team__content h2 {
+    font-size: clamp(28px, 3.5vw, 42px);
+    margin: 16px 0 0;
     line-height: 1.2;
   }
   
-  @media (max-width: 900px) {
-    .story { grid-template-columns: 1fr; gap: 48px; padding: 60px 5%; }
-    .values { padding: 60px 5%; }
-    .values__grid { grid-template-columns: 1fr; gap: 40px; }
+  .team__content h2 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  
+  .team__content p {
+    font-size: 16px;
+    color: var(--gray);
+    line-height: 2;
+    margin-bottom: 20px;
+    max-width: 480px;
+  }
+  
+  /* Stats */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid rgba(0,0,0,0.08);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+  
+  .stat {
+    padding: 80px 40px;
+    text-align: center;
+    border-right: 1px solid rgba(0,0,0,0.08);
+    transition: background 0.5s;
+  }
+  
+  .stat:last-child { border-right: none; }
+  
+  .stat:hover { background: var(--light); }
+  
+  .stat__number {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 56px;
+    margin-bottom: 12px;
+  }
+  
+  .stat__label {
+    font-size: 11px;
+    color: var(--gray);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+  
+  /* Quote */
+  .quote {
+    padding: 140px 10%;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  .quote__mark {
+    font-family: 'Playfair Display', serif;
+    font-size: 200px;
+    color: var(--gold);
+    opacity: 0.15;
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    line-height: 1;
+  }
+  
+  .quote blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 3vw, 36px);
+    font-style: italic;
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .quote cite {
+    display: block;
+    margin-top: 32px;
+    font-size: 13px;
+    color: var(--gray);
+    font-style: normal;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+  
+  /* CTA */
+  .cta {
+    text-align: center;
+    padding: 180px 5%;
+    background: var(--light);
+  }
+  
+  .cta h2 {
+    font-size: clamp(36px, 5vw, 56px);
+    margin: 16px 0 0;
+  }
+  
+  .cta p {
+    font-size: 16px;
+    color: var(--gray);
+    margin-bottom: 48px;
+  }
+  
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .story, .team { grid-template-columns: 1fr; }
+    .story__image, .team__image { height: 50vh; }
+    .team__content { order: 2; }
+    .team__image { order: 1; }
+    .values__grid { grid-template-columns: repeat(2, 1fr); }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .stat { border-bottom: 1px solid rgba(0,0,0,0.08); }
+  }
+  
+  @media (max-width: 768px) {
+    .values__grid { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: 1fr; }
+    .stat { border-right: none; }
   }
 </style>
