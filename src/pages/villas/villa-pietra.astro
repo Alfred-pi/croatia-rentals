@@ -1,7 +1,5 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-const rawBase = import.meta.env.BASE_URL;
-const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
 
 const villa = {
   name: 'Villa Pietra',
@@ -15,6 +13,7 @@ const villa = {
     'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1400&q=90&auto=format',
     'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=85&auto=format',
     'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=85&auto=format',
+    'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=85&auto=format',
   ]
 };
 ---
@@ -22,13 +21,17 @@ const villa = {
 <Layout title={`${villa.name} — ADRIATIC`}>
   <section class="villa-hero">
     <img src={villa.images[0]} alt={villa.name} />
+    <div class="villa-hero__overlay"></div>
+    <div class="villa-hero__content">
+      <span>{villa.location}</span>
+      <h1>{villa.name}</h1>
+    </div>
   </section>
 
   <section class="villa-intro">
     <div class="villa-intro__main">
-      <span class="villa-intro__location">{villa.location}</span>
-      <h1>{villa.name}</h1>
-      <p>A meticulously restored 16th-century stone residence perched above Dubrovnik's Old Town, blending centuries of history with contemporary luxury.</p>
+      <p class="lead">A meticulously restored 16th-century stone residence perched above Dubrovnik's Old Town, blending centuries of history with contemporary luxury.</p>
+      <p>The villa offers panoramic views of the Adriatic Sea and the iconic terracotta rooftops of the Old Town. Each of the four suites has been individually designed, featuring original stone walls, hand-crafted furniture, and modern amenities.</p>
     </div>
     <div class="villa-intro__specs">
       <div class="spec">
@@ -58,12 +61,12 @@ const villa = {
     ))}
   </section>
 
-  <section class="villa-details">
-    <div class="details-col">
+  <section class="villa-features">
+    <div class="features-col">
       <h3>The Space</h3>
       <p>Four individually designed suites feature original stone walls, hand-crafted furniture, and modern amenities. The private infinity pool appears to merge with the sea beyond.</p>
     </div>
-    <div class="details-col">
+    <div class="features-col">
       <h3>Amenities</h3>
       <ul>
         <li>Private infinity pool</li>
@@ -74,27 +77,39 @@ const villa = {
         <li>24/7 concierge</li>
       </ul>
     </div>
+    <div class="features-col">
+      <h3>Location</h3>
+      <ul>
+        <li>2 min to Old Town</li>
+        <li>5 min to City Walls</li>
+        <li>10 min to Beach</li>
+        <li>25 min to Airport</li>
+      </ul>
+    </div>
   </section>
 
   <section class="villa-booking">
-    <div class="booking-price">
-      <span class="price">€{villa.price}</span>
-      <span class="period">per night</span>
+    <div class="booking-card">
+      <div class="booking-price">
+        <span class="price">€{villa.price}</span>
+        <span class="period">per night</span>
+      </div>
+      <p>Minimum 3 nights · Includes housekeeping</p>
+      <a href="/croatia-rentals/contact/" class="btn btn--primary">Request This Villa</a>
     </div>
-    <a href={`${base}contact/`} class="btn btn--fill">Request This Villa</a>
   </section>
 
   <section class="villa-nav">
-    <a href={`${base}villas/`}>← All Villas</a>
-    <a href={`${base}villas/casa-blu/`}>Next: Casa Blu →</a>
+    <a href="/croatia-rentals/villas/">← All Villas</a>
+    <a href="/croatia-rentals/villas/casa-blu/">Next: Casa Blu →</a>
   </section>
 </Layout>
 
 <style>
   .villa-hero {
-    padding-top: 72px;
-    height: 85vh;
-    overflow: hidden;
+    position: relative;
+    height: 70vh;
+    min-height: 500px;
   }
   
   .villa-hero img {
@@ -103,27 +118,49 @@ const villa = {
     object-fit: cover;
   }
   
+  .villa-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(15,20,25,0.7), transparent 50%);
+  }
+  
+  .villa-hero__content {
+    position: absolute;
+    bottom: 60px;
+    left: 5%;
+    color: var(--white);
+  }
+  
+  .villa-hero__content span {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 12px;
+    padding: 8px 16px;
+    border: 1px solid var(--coral);
+    border-radius: 20px;
+  }
+  
+  .villa-hero__content h1 {
+    font-size: clamp(40px, 6vw, 64px);
+  }
+  
   .villa-intro {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    padding: 100px 10%;
+    grid-template-columns: 2fr 1fr;
+    gap: 60px;
+    padding: 80px 5%;
     max-width: 1400px;
     margin: 0 auto;
   }
   
-  .villa-intro__location {
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
-    display: block;
-    margin-bottom: 16px;
-  }
-  
-  .villa-intro__main h1 {
-    font-size: clamp(36px, 5vw, 52px);
-    margin-bottom: 24px;
+  .villa-intro__main .lead {
+    font-size: 22px;
+    line-height: 1.6;
+    color: var(--black);
+    margin-bottom: 20px;
   }
   
   .villa-intro__main p {
@@ -135,33 +172,34 @@ const villa = {
   .villa-intro__specs {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-content: center;
+    gap: 20px;
   }
   
   .spec {
+    background: var(--light);
+    padding: 24px;
     text-align: center;
-    padding: 32px;
-    border: 1px solid var(--light);
+    border-radius: 8px;
   }
   
   .spec__value {
     display: block;
     font-family: 'Playfair Display', serif;
     font-size: 32px;
-    margin-bottom: 8px;
+    color: var(--blue);
+    margin-bottom: 4px;
   }
   
   .spec__label {
-    font-size: 11px;
-    letter-spacing: 0.15em;
+    font-size: 12px;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--gray);
   }
   
   .villa-gallery {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 16px;
     padding: 0 5%;
   }
@@ -169,70 +207,85 @@ const villa = {
   .gallery-item {
     aspect-ratio: 4/3;
     overflow: hidden;
+    border-radius: 8px;
   }
   
   .gallery-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s ease;
+    transition: transform 0.6s;
   }
   
   .gallery-item:hover img {
     transform: scale(1.05);
   }
   
-  .villa-details {
+  .villa-features {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    padding: 100px 10%;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px;
+    padding: 80px 5%;
     max-width: 1400px;
     margin: 0 auto;
   }
   
-  .details-col h3 {
-    font-size: 24px;
-    margin-bottom: 24px;
+  .features-col h3 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: var(--black);
   }
   
-  .details-col p {
-    font-size: 16px;
+  .features-col p {
+    font-size: 15px;
     color: var(--gray);
-    line-height: 1.9;
+    line-height: 1.8;
   }
   
-  .details-col ul {
+  .features-col ul {
     list-style: none;
   }
   
-  .details-col li {
+  .features-col li {
     padding: 12px 0;
     border-bottom: 1px solid var(--light);
     font-size: 15px;
     color: var(--gray);
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
   
-  .details-col li:first-child {
-    border-top: 1px solid var(--light);
+  .features-col li::before {
+    content: '✓';
+    color: var(--coral);
+    font-weight: bold;
   }
   
   .villa-booking {
+    background: var(--blue);
+    padding: 60px 5%;
     display: flex;
-    align-items: center;
     justify-content: center;
-    gap: 60px;
-    padding: 80px 5%;
-    background: var(--light);
+  }
+  
+  .booking-card {
+    background: var(--white);
+    padding: 48px;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
   }
   
   .booking-price {
-    text-align: right;
+    margin-bottom: 16px;
   }
   
   .price {
     font-family: 'Playfair Display', serif;
     font-size: 48px;
+    color: var(--blue);
   }
   
   .period {
@@ -241,10 +294,20 @@ const villa = {
     color: var(--gray);
   }
   
+  .booking-card > p {
+    font-size: 14px;
+    color: var(--gray);
+    margin-bottom: 24px;
+  }
+  
+  .booking-card .btn {
+    width: 100%;
+  }
+  
   .villa-nav {
     display: flex;
     justify-content: space-between;
-    padding: 40px 5%;
+    padding: 32px 5%;
     border-top: 1px solid var(--light);
   }
   
@@ -255,28 +318,32 @@ const villa = {
   }
   
   .villa-nav a:hover {
-    color: var(--black);
+    color: var(--coral);
   }
   
   @media (max-width: 900px) {
-    .villa-intro,
-    .villa-details {
+    .villa-intro {
       grid-template-columns: 1fr;
-      gap: 48px;
-      padding: 60px 5%;
+      gap: 40px;
+    }
+    
+    .villa-intro__specs {
+      grid-template-columns: repeat(4, 1fr);
     }
     
     .villa-gallery {
       grid-template-columns: 1fr;
     }
     
-    .villa-booking {
-      flex-direction: column;
-      gap: 32px;
+    .villa-features {
+      grid-template-columns: 1fr;
+      gap: 40px;
     }
-    
-    .booking-price {
-      text-align: center;
+  }
+  
+  @media (max-width: 600px) {
+    .villa-intro__specs {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 </style>

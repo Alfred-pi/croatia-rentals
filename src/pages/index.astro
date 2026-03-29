@@ -1,156 +1,343 @@
 ---
 import Layout from '../layouts/Layout.astro';
-const rawBase = import.meta.env.BASE_URL;
-const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
 
 const villas = [
-  {
-    name: 'Villa Pietra',
-    location: 'Dubrovnik',
-    price: 890,
-    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=85&auto=format',
-    slug: 'villa-pietra'
-  },
-  {
-    name: 'Casa Blu',
-    location: 'Hvar',
-    price: 1200,
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=85&auto=format',
-    slug: 'casa-blu'
-  },
-  {
-    name: 'Villa Oliva',
-    location: 'Split',
-    price: 750,
-    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=85&auto=format',
-    slug: 'villa-oliva'
-  }
+  { name: 'Villa Pietra', location: 'Dubrovnik', price: 890, beds: 4, image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=85&auto=format', slug: 'villa-pietra' },
+  { name: 'Casa Blu', location: 'Hvar', price: 1200, beds: 5, image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=85&auto=format', slug: 'casa-blu' },
+  { name: 'Villa Oliva', location: 'Split', price: 750, beds: 3, image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=85&auto=format', slug: 'villa-oliva' },
+];
+
+const destinations = [
+  { name: 'Dubrovnik', desc: 'Pearl of the Adriatic', image: 'https://images.unsplash.com/photo-1555990538-1e15d5b97d8d?w=600&q=85&auto=format' },
+  { name: 'Hvar', desc: 'Island of lavender & sun', image: 'https://images.unsplash.com/photo-1534008897995-27a23e859048?w=600&q=85&auto=format' },
+  { name: 'Split', desc: 'Ancient Roman splendor', image: 'https://images.unsplash.com/photo-1592499453756-ee2368f632ee?w=600&q=85&auto=format' },
+];
+
+const features = [
+  { icon: '🏠', title: 'Handpicked Villas', desc: 'Every property personally inspected and curated for exceptional quality.' },
+  { icon: '🛎️', title: '24/7 Concierge', desc: 'Dedicated support for restaurant reservations, excursions, and more.' },
+  { icon: '🚗', title: 'Private Transfers', desc: 'Seamless airport pickups and luxury transportation.' },
+  { icon: '🍽️', title: 'Chef Services', desc: 'Private chefs delivering authentic Croatian cuisine to your villa.' },
+];
+
+const testimonials = [
+  { text: "An absolutely incredible experience. The villa exceeded all expectations and the service was impeccable.", author: "James & Sarah", location: "London, UK" },
+  { text: "We've stayed at luxury properties worldwide, but Adriatic stands apart. Truly exceptional.", author: "The Martinez Family", location: "Miami, USA" },
 ];
 ---
 
 <Layout title="ADRIATIC — Luxury Croatian Villas">
   <!-- Hero -->
   <section class="hero">
+    <div class="hero__bg">
+      <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1800&q=90&auto=format" alt="Luxury Croatian villa" />
+      <div class="hero__overlay"></div>
+    </div>
     <div class="hero__content">
       <span class="hero__tag">Croatian Riviera</span>
-      <h1>Where the<br/>Adriatic meets<br/>luxury</h1>
-      <p>A curated collection of exceptional villas along Croatia's most coveted coastline.</p>
-      <a href={`${base}villas/`} class="btn">Explore Villas</a>
+      <h1>Discover the<br/>Adriatic's finest<br/>retreats</h1>
+      <p>A curated collection of extraordinary villas along Croatia's most coveted coastline.</p>
+      <div class="hero__ctas">
+        <a href="/croatia-rentals/villas/" class="btn btn--primary">Explore Villas</a>
+        <a href="/croatia-rentals/about/" class="btn btn--white">Our Story</a>
+      </div>
     </div>
-    <div class="hero__image">
-      <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1400&q=90&auto=format" alt="Luxury villa" />
+    <div class="hero__scroll">Scroll to explore</div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats">
+    <div class="stat">
+      <span class="stat__number">25+</span>
+      <span class="stat__label">Luxury Villas</span>
+    </div>
+    <div class="stat">
+      <span class="stat__number">6</span>
+      <span class="stat__label">Destinations</span>
+    </div>
+    <div class="stat">
+      <span class="stat__number">500+</span>
+      <span class="stat__label">Happy Guests</span>
+    </div>
+    <div class="stat">
+      <span class="stat__number">5★</span>
+      <span class="stat__label">Average Rating</span>
     </div>
   </section>
 
   <!-- Intro -->
   <section class="intro">
-    <div class="intro__number">01</div>
     <div class="intro__content">
+      <span class="section-tag">About Us</span>
       <h2>Exceptional properties,<br/>extraordinary experiences</h2>
       <p>Each villa in our collection has been personally selected for its architectural distinction, prime location, and commitment to guest experience. From historic stone estates in Dubrovnik to contemporary retreats on Hvar, we offer access to Croatia's most remarkable private residences.</p>
+      <a href="/croatia-rentals/about/" class="btn btn--outline">Learn More</a>
+    </div>
+    <div class="intro__image">
+      <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=85&auto=format" alt="Villa interior" />
     </div>
   </section>
 
-  <!-- Villas -->
+  <!-- Featured Villas -->
   <section class="villas">
-    <div class="villas__header">
-      <span>02</span>
-      <h2>Selected Villas</h2>
-      <a href={`${base}villas/`}>View All →</a>
+    <div class="section-header">
+      <div>
+        <span class="section-tag">Our Collection</span>
+        <h2>Featured Villas</h2>
+      </div>
+      <a href="/croatia-rentals/villas/" class="btn btn--outline">View All</a>
     </div>
     <div class="villas__grid">
-      {villas.map((villa, i) => (
-        <a href={`${base}villas/${villa.slug}/`} class="villa-card">
+      {villas.map((villa) => (
+        <a href={`/croatia-rentals/villas/${villa.slug}/`} class="villa-card">
+          <div class="villa-card__badge">{villa.beds} Beds</div>
           <div class="villa-card__image">
             <img src={villa.image} alt={villa.name} loading="lazy" />
           </div>
           <div class="villa-card__info">
             <span class="villa-card__location">{villa.location}</span>
             <h3>{villa.name}</h3>
-            <span class="villa-card__price">From €{villa.price}/night</span>
+            <div class="villa-card__footer">
+              <span class="villa-card__price">From €{villa.price}<small>/night</small></span>
+              <span class="villa-card__link">View →</span>
+            </div>
           </div>
         </a>
       ))}
     </div>
   </section>
 
+  <!-- Destinations -->
+  <section class="destinations">
+    <div class="section-header section-header--center">
+      <span class="section-tag">Destinations</span>
+      <h2>Explore Croatia</h2>
+      <p>From ancient walled cities to sun-drenched islands</p>
+    </div>
+    <div class="destinations__grid">
+      {destinations.map((dest) => (
+        <div class="dest-card">
+          <img src={dest.image} alt={dest.name} loading="lazy" />
+          <div class="dest-card__overlay">
+            <h3>{dest.name}</h3>
+            <p>{dest.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features">
+    <div class="section-header section-header--center">
+      <span class="section-tag">Why Choose Us</span>
+      <h2>The Adriatic Difference</h2>
+    </div>
+    <div class="features__grid">
+      {features.map((f) => (
+        <div class="feature">
+          <span class="feature__icon">{f.icon}</span>
+          <h3>{f.title}</h3>
+          <p>{f.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <div class="section-header section-header--center">
+      <span class="section-tag">Testimonials</span>
+      <h2>What Our Guests Say</h2>
+    </div>
+    <div class="testimonials__grid">
+      {testimonials.map((t) => (
+        <div class="testimonial">
+          <p>"{t.text}"</p>
+          <div class="testimonial__author">
+            <strong>{t.author}</strong>
+            <span>{t.location}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="cta">
-    <h2>Begin your journey</h2>
-    <p>Let us help you find the perfect Croatian retreat.</p>
-    <a href={`${base}contact/`} class="btn btn--fill">Get in Touch</a>
+    <div class="cta__content">
+      <h2>Ready for your<br/>Croatian escape?</h2>
+      <p>Let us help you find the perfect villa for your dream vacation.</p>
+      <a href="/croatia-rentals/contact/" class="btn btn--primary">Get in Touch</a>
+    </div>
   </section>
 </Layout>
 
 <style>
   /* Hero */
   .hero {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-height: 100vh;
-    padding-top: 80px;
-  }
-  
-  .hero__content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 80px 10%;
-  }
-  
-  .hero__tag {
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 32px;
-  }
-  
-  .hero__content h1 {
-    font-size: clamp(40px, 6vw, 72px);
-    line-height: 1.1;
-    margin-bottom: 32px;
-  }
-  
-  .hero__content p {
-    font-size: 16px;
-    color: var(--gray);
-    max-width: 400px;
-    margin-bottom: 48px;
-    line-height: 1.8;
-  }
-  
-  .hero__image {
     position: relative;
-    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
   }
   
-  .hero__image img {
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+  
+  .hero__bg img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
   
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(12,74,110,0.6), rgba(15,20,25,0.8));
+  }
+  
+  .hero__content {
+    max-width: 800px;
+    padding: 0 5%;
+  }
+  
+  .hero__tag {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 24px;
+    padding: 8px 16px;
+    border: 1px solid var(--coral);
+    border-radius: 20px;
+  }
+  
+  .hero h1 {
+    font-size: clamp(40px, 7vw, 72px);
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+  
+  .hero p {
+    font-size: 18px;
+    color: rgba(255,255,255,0.8);
+    max-width: 500px;
+    margin: 0 auto 40px;
+    line-height: 1.8;
+  }
+  
+  .hero__ctas {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .hero__scroll {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    animation: bounce 2s infinite;
+  }
+  
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(10px); }
+  }
+  
+  /* Stats */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: var(--blue);
+    color: var(--white);
+  }
+  
+  .stat {
+    padding: 48px 24px;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  .stat:last-child {
+    border-right: none;
+  }
+  
+  .stat__number {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    margin-bottom: 8px;
+  }
+  
+  .stat__label {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  
+  /* Section tag */
+  .section-tag {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 16px;
+  }
+  
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 48px;
+    padding: 0 5%;
+  }
+  
+  .section-header h2 {
+    font-size: clamp(28px, 4vw, 40px);
+    color: var(--black);
+  }
+  
+  .section-header--center {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .section-header--center p {
+    color: var(--gray);
+    margin-top: 12px;
+  }
+  
   /* Intro */
   .intro {
     display: grid;
-    grid-template-columns: 100px 1fr;
-    gap: 60px;
-    padding: 160px 10%;
-    max-width: 1200px;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    padding: 120px 5%;
+    max-width: 1400px;
     margin: 0 auto;
-  }
-  
-  .intro__number {
-    font-family: 'Playfair Display', serif;
-    font-size: 14px;
-    color: var(--gold);
-    padding-top: 8px;
   }
   
   .intro__content h2 {
     font-size: clamp(28px, 4vw, 42px);
-    margin-bottom: 32px;
+    margin-bottom: 24px;
     line-height: 1.3;
   }
   
@@ -158,43 +345,25 @@ const villas = [
     font-size: 16px;
     color: var(--gray);
     line-height: 1.9;
-    max-width: 600px;
+    margin-bottom: 32px;
+  }
+  
+  .intro__image {
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  
+  .intro__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   
   /* Villas */
   .villas {
-    padding: 80px 5%;
+    padding: 100px 0;
     background: var(--light);
-  }
-  
-  .villas__header {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    margin-bottom: 60px;
-    padding: 0 5%;
-  }
-  
-  .villas__header span {
-    font-family: 'Playfair Display', serif;
-    font-size: 14px;
-    color: var(--gold);
-  }
-  
-  .villas__header h2 {
-    font-size: 28px;
-    flex: 1;
-  }
-  
-  .villas__header a {
-    font-size: 13px;
-    letter-spacing: 0.05em;
-    color: var(--gray);
-    transition: color 0.3s;
-  }
-  
-  .villas__header a:hover {
-    color: var(--black);
   }
   
   .villas__grid {
@@ -205,90 +374,281 @@ const villas = [
   }
   
   .villa-card {
-    display: block;
+    position: relative;
+    background: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .villa-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+  }
+  
+  .villa-card__badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 2;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    background: var(--white);
+    border-radius: 4px;
   }
   
   .villa-card__image {
-    aspect-ratio: 4/5;
+    aspect-ratio: 4/3;
     overflow: hidden;
-    margin-bottom: 20px;
   }
   
   .villa-card__image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s ease;
+    transition: transform 0.6s;
   }
   
   .villa-card:hover .villa-card__image img {
-    transform: scale(1.05);
+    transform: scale(1.08);
+  }
+  
+  .villa-card__info {
+    padding: 24px;
   }
   
   .villa-card__location {
-    font-size: 11px;
-    letter-spacing: 0.15em;
+    font-size: 12px;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--gold);
+    color: var(--coral);
   }
   
   .villa-card__info h3 {
     font-size: 22px;
-    margin: 8px 0;
+    margin: 8px 0 16px;
+    color: var(--black);
+  }
+  
+  .villa-card__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   
   .villa-card__price {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--blue);
+  }
+  
+  .villa-card__price small {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--gray);
+  }
+  
+  .villa-card__link {
+    font-size: 13px;
+    color: var(--coral);
+    font-weight: 500;
+  }
+  
+  /* Destinations */
+  .destinations {
+    padding: 100px 5%;
+  }
+  
+  .destinations__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  
+  .dest-card {
+    position: relative;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  
+  .dest-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s;
+  }
+  
+  .dest-card:hover img {
+    transform: scale(1.08);
+  }
+  
+  .dest-card__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(15,20,25,0.9), transparent 60%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 32px;
+    color: var(--white);
+  }
+  
+  .dest-card h3 {
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+  
+  .dest-card p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.8);
+  }
+  
+  /* Features */
+  .features {
+    padding: 100px 5%;
+    background: var(--sand);
+  }
+  
+  .features__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .feature {
+    text-align: center;
+  }
+  
+  .feature__icon {
+    display: block;
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
+  
+  .feature h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: var(--black);
+  }
+  
+  .feature p {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.7;
+  }
+  
+  /* Testimonials */
+  .testimonials {
+    padding: 100px 5%;
+  }
+  
+  .testimonials__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  .testimonial {
+    background: var(--light);
+    padding: 40px;
+    border-radius: 8px;
+    border-left: 4px solid var(--coral);
+  }
+  
+  .testimonial p {
+    font-size: 18px;
+    font-style: italic;
+    line-height: 1.8;
+    margin-bottom: 24px;
+    color: var(--black);
+  }
+  
+  .testimonial__author strong {
+    display: block;
+    font-weight: 500;
+    color: var(--black);
+  }
+  
+  .testimonial__author span {
     font-size: 13px;
     color: var(--gray);
   }
   
   /* CTA */
   .cta {
+    background: var(--blue);
+    padding: 120px 5%;
     text-align: center;
-    padding: 160px 5%;
+    color: var(--white);
   }
   
   .cta h2 {
     font-size: clamp(32px, 5vw, 48px);
-    margin-bottom: 16px;
+    margin-bottom: 20px;
+    line-height: 1.2;
   }
   
   .cta p {
-    font-size: 16px;
-    color: var(--gray);
+    font-size: 18px;
+    color: rgba(255,255,255,0.8);
     margin-bottom: 40px;
   }
   
-  /* Mobile */
-  @media (max-width: 1024px) {
-    .hero {
-      grid-template-columns: 1fr;
-      min-height: auto;
+  /* Responsive */
+  @media (max-width: 900px) {
+    .stats {
+      grid-template-columns: repeat(2, 1fr);
     }
     
-    .hero__content {
-      padding: 120px 5% 60px;
+    .stat {
+      border-bottom: 1px solid rgba(255,255,255,0.1);
     }
     
-    .hero__image {
-      height: 60vh;
-    }
-    
-    .villas__grid {
-      grid-template-columns: 1fr;
-      gap: 48px;
-    }
-  }
-  
-  @media (max-width: 768px) {
     .intro {
       grid-template-columns: 1fr;
-      gap: 24px;
       padding: 80px 5%;
     }
     
-    .villas__header {
-      flex-wrap: wrap;
+    .villas__grid,
+    .destinations__grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .features__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .testimonials__grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .section-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .stats {
+      grid-template-columns: 1fr;
+    }
+    
+    .stat {
+      border-right: none;
+    }
+    
+    .features__grid {
+      grid-template-columns: 1fr;
     }
   }
 </style>

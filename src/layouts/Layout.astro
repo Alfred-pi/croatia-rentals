@@ -5,8 +5,6 @@ interface Props {
 }
 
 const { title, description = "Luxury Croatian villas" } = Astro.props;
-const rawBase = import.meta.env.BASE_URL;
-const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
 ---
 
 <!DOCTYPE html>
@@ -22,28 +20,88 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
 </head>
 <body>
   <nav class="nav">
-    <a href={base} class="nav__logo">ADRIATIC</a>
+    <a href="/croatia-rentals/" class="nav__logo">ADRIATIC</a>
     <div class="nav__links">
-      <a href={`${base}villas/`}>Villas</a>
-      <a href={`${base}about/`}>About</a>
-      <a href={`${base}contact/`}>Contact</a>
+      <a href="/croatia-rentals/villas/">Villas</a>
+      <a href="/croatia-rentals/about/">About</a>
+      <a href="/croatia-rentals/contact/">Contact</a>
     </div>
-    <a href={`${base}contact/`} class="nav__cta">Inquire</a>
+    <button class="nav__burger" aria-label="Menu">
+      <span></span>
+      <span></span>
+    </button>
+    <a href="/croatia-rentals/contact/" class="nav__cta">Inquire</a>
   </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu">
+    <a href="/croatia-rentals/">Home</a>
+    <a href="/croatia-rentals/villas/">Villas</a>
+    <a href="/croatia-rentals/about/">About</a>
+    <a href="/croatia-rentals/contact/">Contact</a>
+  </div>
 
   <main>
     <slot />
   </main>
 
   <footer class="footer">
-    <div class="footer__brand">ADRIATIC</div>
-    <div class="footer__links">
-      <a href={`${base}villas/`}>Villas</a>
-      <a href={`${base}about/`}>About</a>
-      <a href={`${base}contact/`}>Contact</a>
+    <div class="footer__top">
+      <div class="footer__brand">
+        <span class="footer__logo">ADRIATIC</span>
+        <p>Curated luxury villas along Croatia's stunning Adriatic coast.</p>
+      </div>
+      <div class="footer__nav">
+        <h4>Explore</h4>
+        <a href="/croatia-rentals/villas/">All Villas</a>
+        <a href="/croatia-rentals/about/">Our Story</a>
+        <a href="/croatia-rentals/contact/">Contact</a>
+      </div>
+      <div class="footer__nav">
+        <h4>Destinations</h4>
+        <a href="/croatia-rentals/villas/">Dubrovnik</a>
+        <a href="/croatia-rentals/villas/">Hvar</a>
+        <a href="/croatia-rentals/villas/">Split</a>
+      </div>
+      <div class="footer__contact">
+        <h4>Get in Touch</h4>
+        <a href="mailto:hello@adriatic.hr">hello@adriatic.hr</a>
+        <a href="tel:+385912345678">+385 91 234 5678</a>
+      </div>
     </div>
-    <div class="footer__copy">© 2026</div>
+    <div class="footer__bottom">
+      <span>© 2026 Adriatic Villas</span>
+      <span>Dubrovnik, Croatia</span>
+    </div>
   </footer>
+
+  <script>
+    const burger = document.querySelector('.nav__burger');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const nav = document.querySelector('.nav');
+    
+    burger?.addEventListener('click', () => {
+      burger.classList.toggle('active');
+      mobileMenu?.classList.toggle('open');
+    });
+    
+    // Close menu on link click
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        burger?.classList.remove('active');
+        mobileMenu?.classList.remove('open');
+      });
+    });
+    
+    // Nav scroll effect
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        nav?.classList.add('scrolled');
+      } else {
+        nav?.classList.remove('scrolled');
+      }
+    });
+  </script>
 </body>
 </html>
 
@@ -55,11 +113,14 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
   }
   
   :root {
-    --black: #0a0a0a;
+    --black: #0f1419;
     --white: #ffffff;
-    --gray: #888888;
-    --light: #f5f5f5;
-    --gold: #c9a962;
+    --gray: #6b7280;
+    --light: #f8fafc;
+    --blue: #0c4a6e;
+    --blue-light: #0ea5e9;
+    --coral: #f97316;
+    --sand: #fef3c7;
   }
   
   html {
@@ -73,13 +134,11 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
     background: var(--white);
     line-height: 1.6;
     font-size: 15px;
-    letter-spacing: 0.01em;
   }
   
   h1, h2, h3, h4 {
     font-family: 'Playfair Display', serif;
     font-weight: 400;
-    letter-spacing: -0.02em;
   }
   
   a {
@@ -102,120 +161,246 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 24px 5%;
+    padding: 20px 5%;
     background: rgba(255,255,255,0.95);
     backdrop-filter: blur(10px);
+    transition: all 0.3s;
+  }
+  
+  .nav.scrolled {
+    padding: 16px 5%;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.08);
   }
   
   .nav__logo {
     font-family: 'Playfair Display', serif;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 500;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.1em;
+    color: var(--blue);
   }
   
   .nav__links {
     display: flex;
-    gap: 48px;
+    gap: 40px;
   }
   
   .nav__links a {
     font-size: 13px;
-    letter-spacing: 0.1em;
+    font-weight: 400;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
     color: var(--gray);
     transition: color 0.3s;
   }
   
   .nav__links a:hover {
-    color: var(--black);
+    color: var(--blue);
   }
   
   .nav__cta {
     font-size: 12px;
-    letter-spacing: 0.15em;
+    font-weight: 500;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    padding: 12px 28px;
-    border: 1px solid var(--black);
+    padding: 12px 24px;
+    background: var(--coral);
+    color: var(--white);
+    border-radius: 4px;
     transition: all 0.3s;
   }
   
   .nav__cta:hover {
+    background: var(--blue);
+  }
+  
+  .nav__burger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+  }
+  
+  .nav__burger span {
+    width: 24px;
+    height: 2px;
     background: var(--black);
-    color: var(--white);
+    transition: all 0.3s;
+  }
+  
+  .nav__burger.active span:first-child {
+    transform: rotate(45deg) translate(3px, 5px);
+  }
+  
+  .nav__burger.active span:last-child {
+    transform: rotate(-45deg) translate(3px, -5px);
+  }
+  
+  /* Mobile Menu */
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    background: var(--white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  
+  .mobile-menu.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+  
+  .mobile-menu a {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    color: var(--black);
+    transition: color 0.3s;
+  }
+  
+  .mobile-menu a:hover {
+    color: var(--coral);
   }
   
   /* Footer */
   .footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 60px 5%;
-    border-top: 1px solid var(--light);
+    background: var(--blue);
+    color: var(--white);
   }
   
-  .footer__brand {
+  .footer__top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 60px;
+    padding: 80px 5%;
+  }
+  
+  .footer__logo {
     font-family: 'Playfair Display', serif;
-    font-size: 16px;
-    letter-spacing: 0.15em;
-  }
-  
-  .footer__links {
-    display: flex;
-    gap: 40px;
-  }
-  
-  .footer__links a {
-    font-size: 12px;
+    font-size: 24px;
     letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 16px;
+  }
+  
+  .footer__brand p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+    max-width: 280px;
+    line-height: 1.8;
+  }
+  
+  .footer__nav h4,
+  .footer__contact h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--gray);
+    margin-bottom: 20px;
+    color: var(--coral);
+  }
+  
+  .footer__nav a,
+  .footer__contact a {
+    display: block;
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 12px;
     transition: color 0.3s;
   }
   
-  .footer__links a:hover {
-    color: var(--black);
+  .footer__nav a:hover,
+  .footer__contact a:hover {
+    color: var(--white);
   }
   
-  .footer__copy {
-    font-size: 12px;
-    color: var(--gray);
+  .footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    padding: 24px 5%;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
   }
   
   /* Buttons */
   .btn {
     display: inline-block;
-    font-size: 12px;
-    letter-spacing: 0.15em;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    padding: 16px 40px;
-    border: 1px solid var(--black);
-    background: transparent;
-    color: var(--black);
-    cursor: pointer;
+    padding: 16px 32px;
+    border-radius: 4px;
     transition: all 0.3s;
+    cursor: pointer;
+    border: none;
   }
   
-  .btn:hover {
-    background: var(--black);
+  .btn--primary {
+    background: var(--coral);
     color: var(--white);
   }
   
-  .btn--fill {
-    background: var(--black);
+  .btn--primary:hover {
+    background: var(--blue);
+  }
+  
+  .btn--outline {
+    background: transparent;
+    border: 2px solid var(--blue);
+    color: var(--blue);
+  }
+  
+  .btn--outline:hover {
+    background: var(--blue);
     color: var(--white);
   }
   
-  .btn--fill:hover {
-    background: var(--gold);
-    border-color: var(--gold);
+  .btn--white {
+    background: var(--white);
+    color: var(--blue);
   }
   
-  /* Mobile */
-  @media (max-width: 768px) {
+  .btn--white:hover {
+    background: var(--sand);
+  }
+  
+  /* Responsive */
+  @media (max-width: 900px) {
     .nav__links { display: none; }
     .nav__cta { display: none; }
-    .footer { flex-direction: column; gap: 24px; text-align: center; }
-    .footer__links { flex-wrap: wrap; justify-content: center; }
+    .nav__burger { display: flex; }
+    
+    .footer__top {
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .footer__top {
+      grid-template-columns: 1fr;
+      padding: 60px 5%;
+    }
+    
+    .footer__bottom {
+      flex-direction: column;
+      gap: 8px;
+      text-align: center;
+    }
   }
 </style>

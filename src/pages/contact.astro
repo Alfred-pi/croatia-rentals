@@ -1,28 +1,53 @@
 ---
 import Layout from '../layouts/Layout.astro';
-const rawBase = import.meta.env.BASE_URL;
-const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
 ---
 
 <Layout title="Contact — ADRIATIC">
+  <section class="page-hero page-hero--small">
+    <div class="page-hero__bg">
+      <img src="https://images.unsplash.com/photo-1592499453756-ee2368f632ee?w=1600&q=90&auto=format" alt="Croatia" />
+      <div class="page-hero__overlay"></div>
+    </div>
+    <div class="page-hero__content">
+      <span>Contact</span>
+      <h1>Let's Talk</h1>
+      <p>Tell us about your dream Croatian vacation</p>
+    </div>
+  </section>
+
   <section class="contact">
     <div class="contact__info">
-      <span>Contact</span>
-      <h1>Let's talk</h1>
-      <p>Tell us about your ideal Croatian retreat and we'll help make it happen.</p>
+      <h2>Get in Touch</h2>
+      <p>Whether you're ready to book or just exploring options, we're here to help you plan the perfect Croatian escape.</p>
       
       <div class="contact__details">
-        <div class="detail">
-          <span>Email</span>
-          <a href="mailto:hello@adriatic.hr">hello@adriatic.hr</a>
+        <div class="contact-item">
+          <span class="contact-item__icon">📧</span>
+          <div>
+            <h4>Email</h4>
+            <a href="mailto:hello@adriatic.hr">hello@adriatic.hr</a>
+          </div>
         </div>
-        <div class="detail">
-          <span>Phone</span>
-          <a href="tel:+385912345678">+385 91 234 5678</a>
+        <div class="contact-item">
+          <span class="contact-item__icon">📞</span>
+          <div>
+            <h4>Phone</h4>
+            <a href="tel:+385912345678">+385 91 234 5678</a>
+          </div>
         </div>
-        <div class="detail">
-          <span>Based in</span>
-          <p>Dubrovnik, Croatia</p>
+        <div class="contact-item">
+          <span class="contact-item__icon">📍</span>
+          <div>
+            <h4>Location</h4>
+            <p>Dubrovnik, Croatia</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-item__icon">🕐</span>
+          <div>
+            <h4>Hours</h4>
+            <p>24/7 Concierge Support</p>
+          </div>
         </div>
       </div>
     </div>
@@ -31,18 +56,23 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
       <form action="https://formsubmit.co/hello@adriatic.hr" method="POST">
         <div class="form-row">
           <div class="form-group">
-            <label>First Name</label>
+            <label>First Name *</label>
             <input type="text" name="first_name" required />
           </div>
           <div class="form-group">
-            <label>Last Name</label>
+            <label>Last Name *</label>
             <input type="text" name="last_name" required />
           </div>
         </div>
         
         <div class="form-group">
-          <label>Email</label>
+          <label>Email *</label>
           <input type="email" name="email" required />
+        </div>
+        
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="tel" name="phone" />
         </div>
         
         <div class="form-row">
@@ -56,100 +86,157 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
           </div>
         </div>
         
-        <div class="form-group">
-          <label>Guests</label>
-          <select name="guests">
-            <option>2 guests</option>
-            <option>4 guests</option>
-            <option>6 guests</option>
-            <option>8+ guests</option>
-          </select>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Guests</label>
+            <select name="guests">
+              <option>2 guests</option>
+              <option>4 guests</option>
+              <option>6 guests</option>
+              <option>8+ guests</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Budget</label>
+            <select name="budget">
+              <option>€500-1000/night</option>
+              <option>€1000-2000/night</option>
+              <option>€2000+/night</option>
+            </select>
+          </div>
         </div>
         
         <div class="form-group">
           <label>Message</label>
-          <textarea name="message" rows="4" placeholder="Tell us about your trip..."></textarea>
+          <textarea name="message" rows="5" placeholder="Tell us about your ideal Croatian vacation..."></textarea>
         </div>
         
-        <button type="submit" class="btn btn--fill">Send Inquiry</button>
+        <button type="submit" class="btn btn--primary btn--full">Send Inquiry</button>
       </form>
     </div>
   </section>
 </Layout>
 
 <style>
+  .page-hero {
+    position: relative;
+    height: 40vh;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+  }
+  
+  .page-hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+  
+  .page-hero__bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .page-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(12,74,110,0.7), rgba(15,20,25,0.8));
+  }
+  
+  .page-hero__content span {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 16px;
+    padding: 8px 16px;
+    border: 1px solid var(--coral);
+    border-radius: 20px;
+  }
+  
+  .page-hero__content h1 {
+    font-size: clamp(36px, 6vw, 56px);
+    margin-bottom: 16px;
+  }
+  
+  .page-hero__content p {
+    font-size: 18px;
+    color: rgba(255,255,255,0.8);
+  }
+  
   .contact {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    min-height: 100vh;
-    padding-top: 72px;
+    gap: 80px;
+    padding: 80px 5%;
+    max-width: 1400px;
+    margin: 0 auto;
   }
   
-  .contact__info {
-    padding: 100px 10%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  
-  .contact__info span {
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
-    display: block;
-    margin-bottom: 24px;
-  }
-  
-  .contact__info h1 {
-    font-size: clamp(40px, 5vw, 56px);
-    margin-bottom: 20px;
+  .contact__info h2 {
+    font-size: 32px;
+    margin-bottom: 16px;
+    color: var(--black);
   }
   
   .contact__info > p {
     font-size: 16px;
     color: var(--gray);
-    max-width: 360px;
     line-height: 1.8;
+    margin-bottom: 40px;
   }
   
   .contact__details {
-    margin-top: 60px;
+    display: grid;
+    gap: 24px;
   }
   
-  .detail {
-    margin-bottom: 28px;
+  .contact-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
   }
   
-  .detail span {
-    font-size: 11px;
-    letter-spacing: 0.15em;
+  .contact-item__icon {
+    font-size: 24px;
+    width: 48px;
+    height: 48px;
+    background: var(--light);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .contact-item h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--gray);
-    display: block;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
   }
   
-  .detail a,
-  .detail p {
-    font-size: 18px;
+  .contact-item a,
+  .contact-item p {
+    font-size: 16px;
     color: var(--black);
   }
   
-  .detail a:hover {
-    color: var(--gold);
+  .contact-item a:hover {
+    color: var(--coral);
   }
   
   .contact__form {
     background: var(--light);
-    padding: 100px 10%;
-    display: flex;
-    align-items: center;
-  }
-  
-  form {
-    width: 100%;
-    max-width: 480px;
+    padding: 48px;
+    border-radius: 12px;
   }
   
   .form-row {
@@ -164,8 +251,9 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
   
   label {
     display: block;
-    font-size: 11px;
-    letter-spacing: 0.15em;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--gray);
     margin-bottom: 10px;
@@ -175,12 +263,12 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
   select,
   textarea {
     width: 100%;
-    padding: 14px 0;
+    padding: 14px 16px;
     font-family: 'Inter', sans-serif;
     font-size: 15px;
-    border: none;
-    border-bottom: 1px solid var(--gray);
-    background: transparent;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: var(--white);
     color: var(--black);
     transition: border-color 0.3s;
   }
@@ -189,30 +277,26 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
   select:focus,
   textarea:focus {
     outline: none;
-    border-color: var(--gold);
+    border-color: var(--coral);
   }
   
   textarea {
     resize: vertical;
-    min-height: 100px;
+    min-height: 120px;
   }
   
-  button {
-    margin-top: 20px;
+  .btn--full {
     width: 100%;
   }
   
   @media (max-width: 900px) {
     .contact {
       grid-template-columns: 1fr;
-    }
-    
-    .contact__info {
-      padding: 120px 5% 60px;
+      gap: 48px;
     }
     
     .contact__form {
-      padding: 60px 5%;
+      padding: 32px;
     }
     
     .form-row {
