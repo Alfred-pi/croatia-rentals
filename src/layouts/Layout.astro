@@ -48,6 +48,7 @@ const { title, description = "Curated luxury villas along Croatia's stunning Dal
   </footer>
 
   <script>
+    // Custom cursor
     const cursor = document.querySelector('.cursor');
     if (cursor && window.innerWidth > 768) {
       document.addEventListener('mousemove', e => {
@@ -55,11 +56,64 @@ const { title, description = "Curated luxury villas along Croatia's stunning Dal
         cursor.style.top = e.clientY + 'px';
       });
       
-      document.querySelectorAll('a, button, .estate, .tour__play, .property-card').forEach(el => {
+      document.querySelectorAll('a, button, .estate, .tour__play, .property-card, .estate-card, .related-card').forEach(el => {
         el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
         el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
       });
     }
+    
+    // Scroll reveal animations
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+    
+    document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+      observer.observe(el);
+    });
+    
+    // Staggered reveal for grids
+    document.querySelectorAll('.stagger-reveal').forEach(container => {
+      const items = container.children;
+      Array.from(items).forEach((item, index) => {
+        item.style.transitionDelay = `${index * 100}ms`;
+        item.classList.add('reveal-item');
+        observer.observe(item);
+      });
+    });
+    
+    // Parallax on scroll
+    const parallaxElements = document.querySelectorAll('.parallax');
+    window.addEventListener('scroll', () => {
+      parallaxElements.forEach(el => {
+        const speed = el.dataset.speed || 0.5;
+        const yPos = -(window.scrollY * speed);
+        el.style.transform = `translateY(${yPos}px)`;
+      });
+    });
+    
+    // Smooth nav background on scroll
+    const nav = document.querySelector('.nav');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.scrollY;
+      if (currentScroll > 100) {
+        nav.classList.add('nav--scrolled');
+      } else {
+        nav.classList.remove('nav--scrolled');
+      }
+      lastScroll = currentScroll;
+    });
   </script>
 </body>
 </html>
@@ -290,6 +344,26 @@ const { title, description = "Curated luxury villas along Croatia's stunning Dal
     max-width: 600px;
     margin-top: 24px;
     line-height: 1.7;
+  }
+  
+  /* Scroll Reveal Animations */
+  .reveal-on-scroll,
+  .reveal-item {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  .reveal-on-scroll.revealed,
+  .reveal-item.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Nav scrolled state */
+  .nav--scrolled {
+    background: rgba(247, 245, 240, 0.98) !important;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.05);
   }
   
   /* Responsive */
