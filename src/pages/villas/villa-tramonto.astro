@@ -10,19 +10,31 @@ const villa = {
   guests: 8,
   size: 280,
   images: [
-    'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=85',
-    'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=85',
-    'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=85',
-    'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&q=85',
-    'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&q=85',
+    'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=85',
+    'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=85',
+    'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=85',
+    'https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?w=800&q=85',
+    'https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800&q=85',
   ],
-  features: ['Sea View', 'Private Pool', 'Historic Stone', 'Wine Cellar', 'Garden'],
+  gallery: [
+    { src: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=85', caption: 'Villa exterior & pool' },
+    { src: 'https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?w=1200&q=85', caption: 'Infinity pool with sea view' },
+    { src: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200&q=85', caption: 'Open plan living area' },
+    { src: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&q=85', caption: 'Master bedroom' },
+    { src: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?w=1200&q=85', caption: 'Guest bedroom' },
+    { src: 'https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=1200&q=85', caption: 'Outdoor dining terrace' },
+    { src: 'https://images.unsplash.com/photo-1600566752229-250ed79470f8?w=1200&q=85', caption: 'Luxury bathroom' },
+    { src: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&q=85', caption: 'Gourmet kitchen' },
+    { src: 'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=1200&q=85', caption: 'Sea view from terrace' },
+    { src: 'https://images.unsplash.com/photo-1555990538-1e15d5b97d8d?w=1200&q=85', caption: 'Korčula Old Town nearby' },
+  ],
+  features: ['Sea View', 'Infinity Pool', 'Historic Stone', 'Wine Cellar', 'Garden', 'BBQ Area', 'Home Cinema'],
   amenities: ['Heated infinity pool', 'Air conditioning', 'Fully equipped kitchen', 'High-speed WiFi', 'Smart home system', 'Private parking', 'Outdoor dining area', 'BBQ & pizza oven', 'Laundry facilities', 'Daily housekeeping', 'Concierge service', 'Private chef available'],
 };
 
 const related = [
-  { name: 'Casa Blu', location: 'Hvar', price: 1200, image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=85', slug: 'casa-blu' },
-  { name: 'Villa Oliva', location: 'Split', price: 750, image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=85', slug: 'villa-oliva' },
+  { name: 'Casa Blu', location: 'Hvar', price: 1200, image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=85', slug: 'casa-blu' },
+  { name: 'Villa Oliva', location: 'Split', price: 750, image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=85', slug: 'villa-oliva' },
 ];
 
 const airbnbLink = 'https://airbnb.com/rooms/456789';
@@ -37,15 +49,28 @@ const airbnbLink = 'https://airbnb.com/rooms/456789';
         <span class="gallery__badge">★ 4.98</span>
         <span class="gallery__badge gallery__badge--host">Superhost</span>
       </div>
+      <button class="gallery__view-all" id="open-lightbox">View all {villa.gallery.length} photos</button>
     </div>
     <div class="gallery__grid">
-      {villa.images.slice(1).map(img => (
-        <div class="gallery__item">
-          <img src={img} alt={villa.name} loading="lazy" />
+      {villa.images.slice(1, 5).map((img, i) => (
+        <div class="gallery__item" data-index={i + 1}>
+          <img src={img} alt={`${villa.name} ${i + 2}`} loading="lazy" />
         </div>
       ))}
     </div>
   </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox__close" id="close-lightbox">×</button>
+    <button class="lightbox__nav lightbox__nav--prev" id="lightbox-prev">←</button>
+    <button class="lightbox__nav lightbox__nav--next" id="lightbox-next">→</button>
+    <div class="lightbox__content">
+      <img id="lightbox-img" src="" alt="" />
+      <p class="lightbox__caption" id="lightbox-caption"></p>
+      <span class="lightbox__counter" id="lightbox-counter"></span>
+    </div>
+  </div>
 
   <!-- Availability Calendar -->
   <section class="availability reveal">
@@ -150,23 +175,78 @@ const airbnbLink = 'https://airbnb.com/rooms/456789';
     ))}
   </section>
 
+  <!-- Photo Grid Section -->
+  <section class="photo-grid">
+    <div class="photo-grid__header reveal">
+      <span class="intro__number">01</span>
+      <div>
+        <span class="tag">Gallery</span>
+        <h3>Property Photos</h3>
+      </div>
+    </div>
+    <div class="photo-grid__images">
+      {villa.gallery.slice(0, 6).map((photo, i) => (
+        <div class={`photo-grid__item ${i === 0 ? 'photo-grid__item--large' : ''}`} data-index={i}>
+          <img src={photo.src} alt={photo.caption} loading="lazy" />
+          <span class="photo-grid__caption">{photo.caption}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
   <!-- Description -->
   <section class="description">
     <div class="description__content reveal">
-      <span class="intro__number">01</span>
+      <span class="intro__number">02</span>
       <span class="tag">The Property</span>
-      <h2>A stone sanctuary<br/>above the <em>Adriatic</em></h2>
+      <h2>A sunset paradise<br/>above the <em>Adriatic</em></h2>
       <div class="line"></div>
       <p>Villa Tramonto is a stunning 19th-century stone house that has been meticulously restored to offer the perfect blend of historic charm and contemporary luxury. Perched on a hillside overlooking the old town of Korčula, this exceptional property offers breathtaking panoramic views of the Adriatic Sea and the iconic city walls.</p>
       <p>The villa features four beautifully appointed bedrooms, each with its own ensuite bathroom and spectacular views. The open-plan living area flows seamlessly onto a large terrace where you can enjoy al fresco dining while watching the sunset paint the sky in shades of gold and crimson.</p>
       <p>The heated infinity pool appears to merge with the sea beyond, creating an unforgettable visual experience. Surrounded by Mediterranean gardens of lavender, olive trees, and bougainvillea, Villa Tramonto is truly a sanctuary of peace and beauty.</p>
+    </div>
+    <div class="description__image reveal">
+      <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=800&q=85" alt="Sea view" />
+    </div>
+  </section>
+
+  <!-- Room Details -->
+  <section class="rooms reveal">
+    <div class="rooms__header">
+      <span class="intro__number">03</span>
+      <div>
+        <span class="tag">Spaces</span>
+        <h3>Room by Room</h3>
+      </div>
+    </div>
+    <div class="rooms__grid">
+      <div class="room">
+        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=85" alt="Master bedroom" />
+        <h4>Master Suite</h4>
+        <p>King bed, ensuite bathroom, private balcony with sea view, walk-in closet</p>
+      </div>
+      <div class="room">
+        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600&q=85" alt="Guest bedroom" />
+        <h4>Guest Bedrooms (3)</h4>
+        <p>Queen beds, ensuite bathrooms, garden or sea views, luxury linens</p>
+      </div>
+      <div class="room">
+        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&q=85" alt="Living room" />
+        <h4>Living & Dining</h4>
+        <p>Open plan design, floor-to-ceiling windows, fireplace, home cinema system</p>
+      </div>
+      <div class="room">
+        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=85" alt="Kitchen" />
+        <h4>Gourmet Kitchen</h4>
+        <p>Professional appliances, wine fridge, espresso machine, outdoor kitchen</p>
+      </div>
     </div>
   </section>
 
   <!-- Amenities -->
   <section class="amenities reveal">
     <div class="amenities__header">
-      <span class="intro__number">02</span>
+      <span class="intro__number">04</span>
       <div>
         <span class="tag">What's Included</span>
         <h3>Amenities</h3>
@@ -185,10 +265,11 @@ const airbnbLink = 'https://airbnb.com/rooms/456789';
   <!-- Location -->
   <section class="location reveal">
     <div class="location__content">
-      <span class="intro__number">03</span>
+      <span class="intro__number">05</span>
       <span class="tag">Location</span>
       <h3>{villa.location}, Croatia</h3>
       <div class="line"></div>
+      <p>Experience the magic of Korčula, the "Pearl of the Adriatic". Walk the ancient city walls, explore the marble streets of Old Town, or take a boat to the nearby Elaphiti Islands.</p>
       <div class="location__distances">
         <div class="distance">
           <span class="distance__value">5 min</span>
@@ -216,7 +297,7 @@ const airbnbLink = 'https://airbnb.com/rooms/456789';
   <!-- Related -->
   <section class="related">
     <div class="related__header reveal">
-      <span class="intro__number">04</span>
+      <span class="intro__number">06</span>
       <div>
         <span class="tag">More Properties</span>
         <h3>You may also like</h3>
@@ -435,7 +516,7 @@ const airbnbLink = 'https://airbnb.com/rooms/456789';
   .availability__airbnb:hover {
     opacity: 0.7;
   }
-  
+
   /* Gallery */
   .gallery {
     display: grid;
@@ -445,6 +526,7 @@ const airbnbLink = 'https://airbnb.com/rooms/456789';
   }
   
   .gallery__main {
+    position: relative;
     aspect-ratio: 4/3;
     overflow: hidden;
   }
@@ -476,6 +558,25 @@ const airbnbLink = 'https://airbnb.com/rooms/456789';
     color: var(--white);
   }
   
+  .gallery__view-all {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    background: var(--white);
+    padding: 12px 24px;
+    font-size: 13px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    transition: all 0.3s;
+  }
+  
+  .gallery__view-all:hover {
+    background: var(--black);
+    color: var(--white);
+  }
+  
   .gallery__grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -485,6 +586,7 @@ const airbnbLink = 'https://airbnb.com/rooms/456789';
   .gallery__item {
     aspect-ratio: 1;
     overflow: hidden;
+    cursor: pointer;
   }
   
   .gallery__item img {
@@ -496,6 +598,153 @@ const airbnbLink = 'https://airbnb.com/rooms/456789';
   
   .gallery__item:hover img {
     transform: scale(1.05);
+  }
+  
+  /* Lightbox */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .lightbox.active {
+    display: flex;
+    opacity: 1;
+  }
+  
+  .lightbox__close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 48px;
+    height: 48px;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: transparent;
+    color: var(--white);
+    font-size: 28px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .lightbox__close:hover {
+    background: var(--white);
+    color: var(--black);
+  }
+  
+  .lightbox__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 56px;
+    height: 56px;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: transparent;
+    color: var(--white);
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .lightbox__nav:hover {
+    background: var(--white);
+    color: var(--black);
+  }
+  
+  .lightbox__nav--prev { left: 24px; }
+  .lightbox__nav--next { right: 24px; }
+  
+  .lightbox__content {
+    max-width: 90vw;
+    max-height: 80vh;
+    text-align: center;
+  }
+  
+  .lightbox__content img {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+  }
+  
+  .lightbox__caption {
+    color: var(--white);
+    margin-top: 16px;
+    font-size: 14px;
+  }
+  
+  .lightbox__counter {
+    color: rgba(255,255,255,0.5);
+    font-size: 13px;
+    display: block;
+    margin-top: 8px;
+  }
+  
+  /* Photo Grid */
+  .photo-grid {
+    padding: 100px 10%;
+  }
+  
+  .photo-grid__header {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+  
+  .photo-grid__header h3 {
+    font-size: 28px;
+    margin-top: 8px;
+  }
+  
+  .photo-grid__images {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 280px);
+    gap: 16px;
+  }
+  
+  .photo-grid__item {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+  .photo-grid__item--large {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  
+  .photo-grid__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s;
+  }
+  
+  .photo-grid__item:hover img {
+    transform: scale(1.05);
+  }
+  
+  .photo-grid__caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 16px;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    color: var(--white);
+    font-size: 13px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .photo-grid__item:hover .photo-grid__caption {
+    opacity: 1;
   }
   
   /* Header */
@@ -639,8 +888,12 @@ const airbnbLink = 'https://airbnb.com/rooms/456789';
   
   /* Description */
   .description {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 60px;
     padding: 120px 10%;
-    max-width: 900px;
+    max-width: 1400px;
+    margin: 0 auto;
   }
   
   .intro__number {
@@ -669,10 +922,61 @@ const airbnbLink = 'https://airbnb.com/rooms/456789';
     margin-bottom: 24px;
   }
   
+  .description__image {
+    overflow: hidden;
+  }
+  
+  .description__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Rooms */
+  .rooms {
+    padding: 100px 10%;
+    background: var(--light);
+  }
+  
+  .rooms__header {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 60px;
+  }
+  
+  .rooms__header h3 {
+    font-size: 28px;
+    margin-top: 8px;
+  }
+  
+  .rooms__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+  
+  .room img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    margin-bottom: 20px;
+  }
+  
+  .room h4 {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  
+  .room p {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.7;
+  }
+  
   /* Amenities */
   .amenities {
     padding: 100px 10%;
-    background: var(--light);
   }
   
   .amenities__header {
@@ -716,11 +1020,20 @@ const airbnbLink = 'https://airbnb.com/rooms/456789';
     flex-direction: column;
     justify-content: center;
     padding: 80px 10%;
+    background: var(--light);
   }
   
   .location__content h3 {
     font-size: 32px;
     margin: 16px 0 0;
+  }
+  
+  .location__content > p {
+    font-size: 15px;
+    color: var(--gray);
+    line-height: 1.9;
+    margin-top: 24px;
+    max-width: 400px;
   }
   
   .location__distances {
@@ -830,6 +1143,11 @@ const airbnbLink = 'https://airbnb.com/rooms/456789';
     .gallery__grid { display: none; }
     .header { grid-template-columns: 1fr; }
     .booking-card { position: static; }
+    .photo-grid__images { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .photo-grid__item--large { grid-column: span 2; grid-row: span 1; }
+    .description { grid-template-columns: 1fr; }
+    .description__image { height: 50vh; }
+    .rooms__grid { grid-template-columns: repeat(2, 1fr); }
     .amenities__grid { grid-template-columns: repeat(2, 1fr); }
     .location { grid-template-columns: 1fr; }
     .location__image { height: 50vh; }
@@ -837,6 +1155,9 @@ const airbnbLink = 'https://airbnb.com/rooms/456789';
   }
   
   @media (max-width: 768px) {
+    .photo-grid__images { grid-template-columns: 1fr; }
+    .photo-grid__item--large { grid-column: span 1; }
+    .rooms__grid { grid-template-columns: 1fr; }
     .amenities__grid { grid-template-columns: 1fr; }
     .location__distances { grid-template-columns: 1fr; }
     .features { padding: 0 5%; }
@@ -847,9 +1168,86 @@ const airbnbLink = 'https://airbnb.com/rooms/456789';
 </style>
 
 <script>
+  // Lightbox functionality
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxCaption = document.getElementById('lightbox-caption');
+  const lightboxCounter = document.getElementById('lightbox-counter');
+  
+  const gallery = [
+    { src: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=85', caption: 'Villa exterior & pool' },
+    { src: 'https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?w=1200&q=85', caption: 'Infinity pool with sea view' },
+    { src: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200&q=85', caption: 'Open plan living area' },
+    { src: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&q=85', caption: 'Master bedroom' },
+    { src: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?w=1200&q=85', caption: 'Guest bedroom' },
+    { src: 'https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=1200&q=85', caption: 'Outdoor dining terrace' },
+    { src: 'https://images.unsplash.com/photo-1600566752229-250ed79470f8?w=1200&q=85', caption: 'Luxury bathroom' },
+    { src: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&q=85', caption: 'Gourmet kitchen' },
+    { src: 'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=1200&q=85', caption: 'Sea view from terrace' },
+    { src: 'https://images.unsplash.com/photo-1555990538-1e15d5b97d8d?w=1200&q=85', caption: 'Korčula Old Town nearby' },
+  ];
+  
+  let currentIndex = 0;
+  
+  function showImage(index) {
+    currentIndex = index;
+    lightboxImg.src = gallery[index].src;
+    lightboxCaption.textContent = gallery[index].caption;
+    lightboxCounter.textContent = `${index + 1} / ${gallery.length}`;
+  }
+  
+  document.getElementById('open-lightbox')?.addEventListener('click', () => {
+    lightbox.classList.add('active');
+    showImage(0);
+    document.body.style.overflow = 'hidden';
+  });
+  
+  document.getElementById('close-lightbox')?.addEventListener('click', () => {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  });
+  
+  document.getElementById('lightbox-prev')?.addEventListener('click', () => {
+    showImage((currentIndex - 1 + gallery.length) % gallery.length);
+  });
+  
+  document.getElementById('lightbox-next')?.addEventListener('click', () => {
+    showImage((currentIndex + 1) % gallery.length);
+  });
+  
+  // Photo grid click
+  document.querySelectorAll('.photo-grid__item').forEach(item => {
+    item.addEventListener('click', () => {
+      const index = parseInt(item.dataset.index);
+      lightbox.classList.add('active');
+      showImage(index);
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  
+  // Gallery grid click
+  document.querySelectorAll('.gallery__item').forEach(item => {
+    item.addEventListener('click', () => {
+      const index = parseInt(item.dataset.index);
+      lightbox.classList.add('active');
+      showImage(index);
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    if (e.key === 'ArrowLeft') showImage((currentIndex - 1 + gallery.length) % gallery.length);
+    if (e.key === 'ArrowRight') showImage((currentIndex + 1) % gallery.length);
+  });
+
   // Calendar functionality
   const bookedDates = [
-    // Sample booked dates - these would come from Airbnb API in production
     '2026-04-05', '2026-04-06', '2026-04-07', '2026-04-08', '2026-04-09', '2026-04-10', '2026-04-11', '2026-04-12',
     '2026-04-20', '2026-04-21', '2026-04-22', '2026-04-23', '2026-04-24', '2026-04-25', '2026-04-26',
     '2026-05-01', '2026-05-02', '2026-05-03', '2026-05-04', '2026-05-05',
@@ -887,6 +1285,8 @@ const airbnbLink = 'https://airbnb.com/rooms/456789';
     const monthEl = document.getElementById(`month-${calendarNum}`);
     const daysEl = document.getElementById(`days-${calendarNum}`);
     
+    if (!monthEl || !daysEl) return;
+    
     const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 
                         'July', 'August', 'September', 'October', 'November', 'December'];
     
@@ -894,16 +1294,14 @@ const airbnbLink = 'https://airbnb.com/rooms/456789';
     
     const firstDay = new Date(year, month, 1);
     const lastDay = new Date(year, month + 1, 0);
-    const startingDay = (firstDay.getDay() + 6) % 7; // Monday = 0
+    const startingDay = (firstDay.getDay() + 6) % 7;
     
     let html = '';
     
-    // Empty cells before first day
     for (let i = 0; i < startingDay; i++) {
       html += '<span class="calendar__day calendar__day--empty"></span>';
     }
     
-    // Days of month
     for (let day = 1; day <= lastDay.getDate(); day++) {
       const date = new Date(year, month, day);
       const dateStr = formatDate(date);
@@ -939,7 +1337,6 @@ const airbnbLink = 'https://airbnb.com/rooms/456789';
     
     daysEl.innerHTML = html;
     
-    // Add click handlers
     daysEl.querySelectorAll('.calendar__day--available').forEach(dayEl => {
       dayEl.addEventListener('click', () => {
         const clickedDate = new Date(dayEl.dataset.date);
@@ -948,7 +1345,6 @@ const airbnbLink = 'https://airbnb.com/rooms/456789';
           selectedStart = clickedDate;
           selectedEnd = null;
         } else if (clickedDate > selectedStart) {
-          // Check if range contains booked dates
           let hasBooked = false;
           let checkDate = new Date(selectedStart);
           while (checkDate <= clickedDate) {
@@ -990,7 +1386,6 @@ const airbnbLink = 'https://airbnb.com/rooms/456789';
     renderCalendar(2, year2, month2);
   }
 
-  // Navigation
   document.getElementById('prev-month')?.addEventListener('click', () => {
     currentDate.setMonth(currentDate.getMonth() - 1);
     const today = new Date();
@@ -1005,6 +1400,5 @@ const airbnbLink = 'https://airbnb.com/rooms/456789';
     renderBothCalendars();
   });
 
-  // Initial render
   renderBothCalendars();
 </script>
