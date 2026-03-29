@@ -1,32 +1,382 @@
 ---
-// Croatia Luxury Rentals - Ultra Premium Edition
+// Adriatic Prestige - Luxury Croatian Rentals
 ---
 
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Adriatic Prestige | Exclusive Croatian Villa Rentals</title>
+    <title>Adriatic Prestige | Luxury Croatian Villas</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="nav">
+      <a href="/" class="nav__logo">
+        <span class="nav__logo-text">ADRIATIC</span>
+        <span class="nav__logo-accent">Prestige</span>
+      </a>
+      <ul class="nav__links">
+        <li><a href="#villas">Villas</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#virtual-tour">Virtual Tour</a></li>
+        <li><a href="#contact" class="nav__cta">Inquire</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero__bg">
+        <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1920&q=90&auto=format" alt="Luxury villa with infinity pool overlooking the Adriatic Sea" />
+      </div>
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <p class="hero__eyebrow">Exclusive Croatian Escapes</p>
+        <h1 class="hero__title">
+          Where Adriatic<br>
+          <em>Elegance</em> Awaits
+        </h1>
+        <p class="hero__desc">
+          Discover handpicked luxury villas along Croatia's stunning Dalmatian Coast. 
+          Private infinity pools, panoramic sea views, and world-class concierge service.
+        </p>
+        <div class="hero__actions">
+          <a href="#villas" class="btn btn--gold">View Collection</a>
+          <a href="#virtual-tour" class="btn btn--outline">Virtual Tour</a>
+        </div>
+      </div>
+      <div class="hero__scroll">
+        <span>Scroll to explore</span>
+        <div class="hero__scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- Villas Grid -->
+    <section class="villas" id="villas">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-header__tag">The Collection</span>
+          <h2 class="section-header__title">Featured Villas</h2>
+        </header>
+
+        <div class="villas__grid">
+          <!-- Villa 1 -->
+          <article class="villa-card">
+            <div class="villa-card__image">
+              <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=85&auto=format" alt="Villa Ragusa exterior" loading="lazy" />
+              <span class="villa-card__badge">Signature</span>
+            </div>
+            <div class="villa-card__content">
+              <span class="villa-card__location">Dubrovnik · Old Town</span>
+              <h3 class="villa-card__title">Villa Ragusa</h3>
+              <p class="villa-card__desc">Historic stone villa with panoramic views of the ancient city walls and crystal-clear Adriatic waters.</p>
+              <ul class="villa-card__features">
+                <li>4 Bedrooms</li>
+                <li>3 Bathrooms</li>
+                <li>280 m²</li>
+                <li>Sea View</li>
+              </ul>
+              <div class="villa-card__footer">
+                <span class="villa-card__price">From €890<small>/night</small></span>
+                <a href="#" class="villa-card__link">View Details →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Villa 2 -->
+          <article class="villa-card">
+            <div class="villa-card__image">
+              <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=85&auto=format" alt="Split waterfront apartment" loading="lazy" />
+              <span class="villa-card__badge">Waterfront</span>
+            </div>
+            <div class="villa-card__content">
+              <span class="villa-card__location">Split · Riva Promenade</span>
+              <h3 class="villa-card__title">Palazzo Adriatico</h3>
+              <p class="villa-card__desc">Contemporary penthouse in a restored 18th-century palace, steps from Diocletian's Palace.</p>
+              <ul class="villa-card__features">
+                <li>3 Bedrooms</li>
+                <li>2 Bathrooms</li>
+                <li>185 m²</li>
+                <li>Rooftop Terrace</li>
+              </ul>
+              <div class="villa-card__footer">
+                <span class="villa-card__price">From €650<small>/night</small></span>
+                <a href="#" class="villa-card__link">View Details →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Villa 3 -->
+          <article class="villa-card">
+            <div class="villa-card__image">
+              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=85&auto=format" alt="Hvar island villa" loading="lazy" />
+              <span class="villa-card__badge">Island Estate</span>
+            </div>
+            <div class="villa-card__content">
+              <span class="villa-card__location">Hvar · Lavender Coast</span>
+              <h3 class="villa-card__title">Villa Lavanda</h3>
+              <p class="villa-card__desc">Secluded estate surrounded by lavender fields with private infinity pool and yacht mooring.</p>
+              <ul class="villa-card__features">
+                <li>5 Bedrooms</li>
+                <li>4 Bathrooms</li>
+                <li>420 m²</li>
+                <li>Infinity Pool</li>
+              </ul>
+              <div class="villa-card__footer">
+                <span class="villa-card__price">From €1,450<small>/night</small></span>
+                <a href="#" class="villa-card__link">View Details →</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="villas__cta">
+          <a href="#" class="btn btn--dark">View All Properties</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="experience" id="experience">
+      <div class="container">
+        <div class="experience__layout">
+          <div class="experience__content">
+            <span class="section-header__tag">The Experience</span>
+            <h2 class="section-header__title">More Than a Stay</h2>
+            <p class="experience__intro">
+              Every Adriatic Prestige guest receives our signature white-glove service, 
+              ensuring your Croatian escape is nothing short of extraordinary.
+            </p>
+            
+            <div class="experience__features">
+              <div class="exp-feature">
+                <div class="exp-feature__icon">🛥️</div>
+                <div class="exp-feature__text">
+                  <h4>Private Yacht Charter</h4>
+                  <p>Explore hidden islands and secluded coves aboard our luxury fleet.</p>
+                </div>
+              </div>
+              <div class="exp-feature">
+                <div class="exp-feature__icon">🍷</div>
+                <div class="exp-feature__text">
+                  <h4>Wine & Dine</h4>
+                  <p>Private chef experiences and curated Dalmatian wine tastings.</p>
+                </div>
+              </div>
+              <div class="exp-feature">
+                <div class="exp-feature__icon">✨</div>
+                <div class="exp-feature__text">
+                  <h4>24/7 Concierge</h4>
+                  <p>From helicopter transfers to restaurant reservations, we handle everything.</p>
+                </div>
+              </div>
+              <div class="exp-feature">
+                <div class="exp-feature__icon">🎭</div>
+                <div class="exp-feature__text">
+                  <h4>Cultural Experiences</h4>
+                  <p>Private Game of Thrones tours, truffle hunting, and local artisan visits.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="experience__images">
+            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=85&auto=format" alt="Yacht on Adriatic" class="experience__img experience__img--1" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=85&auto=format" alt="Croatian coastline" class="experience__img experience__img--2" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Virtual Tour -->
+    <section class="virtual-tour" id="virtual-tour">
+      <div class="virtual-tour__bg">
+        <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1600&q=85&auto=format" alt="Villa interior" />
+      </div>
+      <div class="virtual-tour__overlay"></div>
+      <div class="container">
+        <div class="virtual-tour__content">
+          <span class="section-header__tag section-header__tag--light">Immersive Experience</span>
+          <h2 class="virtual-tour__title">Explore Before You Arrive</h2>
+          <p class="virtual-tour__desc">
+            Walk through our villas in stunning 3D. Explore every room, admire the views 
+            from each terrace, and find your perfect Croatian retreat from anywhere in the world.
+          </p>
+          <a href="#" class="btn btn--gold btn--large">
+            <span class="btn__play">▶</span>
+            Start Virtual Tour
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+      <div class="container">
+        <div class="stats__grid">
+          <div class="stat">
+            <span class="stat__number">50+</span>
+            <span class="stat__label">Exclusive Properties</span>
+          </div>
+          <div class="stat">
+            <span class="stat__number">12</span>
+            <span class="stat__label">Years of Excellence</span>
+          </div>
+          <div class="stat">
+            <span class="stat__number">98%</span>
+            <span class="stat__label">Guest Satisfaction</span>
+          </div>
+          <div class="stat">
+            <span class="stat__number">24/7</span>
+            <span class="stat__label">Concierge Support</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="contact__layout">
+          <div class="contact__info">
+            <span class="section-header__tag">Get in Touch</span>
+            <h2 class="section-header__title">Plan Your Escape</h2>
+            <p class="contact__intro">
+              Ready to experience Croatian luxury? Our travel specialists are here to 
+              curate your perfect Adriatic getaway.
+            </p>
+            <div class="contact__details">
+              <div class="contact__item">
+                <strong>Email</strong>
+                <a href="mailto:reservations@adriaticprestige.com">reservations@adriaticprestige.com</a>
+              </div>
+              <div class="contact__item">
+                <strong>Phone</strong>
+                <a href="tel:+385911234567">+385 91 123 4567</a>
+              </div>
+              <div class="contact__item">
+                <strong>WhatsApp</strong>
+                <a href="#">Available 24/7</a>
+              </div>
+            </div>
+          </div>
+          <form class="contact__form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" placeholder="John" required>
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" placeholder="Doe" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="john@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="property">Interested Property</label>
+              <select id="property">
+                <option value="">Select a villa...</option>
+                <option value="ragusa">Villa Ragusa · Dubrovnik</option>
+                <option value="adriatico">Palazzo Adriatico · Split</option>
+                <option value="lavanda">Villa Lavanda · Hvar</option>
+                <option value="other">Other / Not sure yet</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" rows="4" placeholder="Tell us about your dream Croatian vacation..."></textarea>
+            </div>
+            <button type="submit" class="btn btn--gold btn--full">Send Inquiry</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__top">
+          <div class="footer__brand">
+            <a href="/" class="nav__logo">
+              <span class="nav__logo-text">ADRIATIC</span>
+              <span class="nav__logo-accent">Prestige</span>
+            </a>
+            <p>Luxury villa rentals along Croatia's stunning Dalmatian Coast.</p>
+          </div>
+          <div class="footer__links">
+            <div class="footer__col">
+              <h5>Properties</h5>
+              <ul>
+                <li><a href="#">Dubrovnik</a></li>
+                <li><a href="#">Split</a></li>
+                <li><a href="#">Hvar</a></li>
+                <li><a href="#">Korčula</a></li>
+              </ul>
+            </div>
+            <div class="footer__col">
+              <h5>Services</h5>
+              <ul>
+                <li><a href="#">Yacht Charter</a></li>
+                <li><a href="#">Private Chef</a></li>
+                <li><a href="#">Concierge</a></li>
+                <li><a href="#">Transfers</a></li>
+              </ul>
+            </div>
+            <div class="footer__col">
+              <h5>Company</h5>
+              <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <p>© 2026 Adriatic Prestige. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
     <style>
-      * {
+      /* ========================================
+         RESET & BASE
+      ======================================== */
+      *, *::before, *::after {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
 
       :root {
-        --champagne: #D4AF37;
-        --champagne-light: #E8D5A3;
-        --champagne-dark: #B8962F;
-        --noir: #0A0A0A;
-        --noir-light: #1A1A1A;
-        --ivory: #FAF8F5;
-        --ivory-warm: #F5F0E8;
-        --slate: #2C2C2C;
-        --muted: #8A8A8A;
+        /* Colors */
+        --gold: #C9A227;
+        --gold-light: #D4B847;
+        --gold-dark: #A88A1F;
+        --black: #0D0D0D;
+        --black-light: #1A1A1A;
+        --white: #FFFFFF;
+        --ivory: #FAF9F6;
+        --gray-100: #F5F5F5;
+        --gray-200: #E5E5E5;
+        --gray-400: #999999;
+        --gray-600: #666666;
+        --gray-800: #333333;
+
+        /* Typography */
+        --font-serif: 'Playfair Display', Georgia, serif;
+        --font-sans: 'Inter', -apple-system, sans-serif;
+
+        /* Spacing */
+        --section-padding: clamp(80px, 10vw, 140px);
+        --container-max: 1280px;
+        --container-padding: clamp(20px, 5vw, 60px);
       }
 
       html {
@@ -34,1233 +384,878 @@
       }
 
       body {
-        font-family: 'Outfit', sans-serif;
-        background: var(--noir);
-        color: var(--ivory);
+        font-family: var(--font-sans);
+        font-size: 16px;
         line-height: 1.6;
-        font-weight: 300;
-        overflow-x: hidden;
+        color: var(--gray-800);
+        background: var(--white);
+        -webkit-font-smoothing: antialiased;
       }
 
+      img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      .container {
+        max-width: var(--container-max);
+        margin: 0 auto;
+        padding: 0 var(--container-padding);
+      }
+
+      /* ========================================
+         TYPOGRAPHY
+      ======================================== */
       h1, h2, h3, h4 {
-        font-family: 'Cormorant Garamond', serif;
-        font-weight: 400;
-        letter-spacing: 0.02em;
+        font-family: var(--font-serif);
+        font-weight: 500;
+        line-height: 1.2;
       }
 
-      /* Cursor glow effect */
-      .cursor-glow {
-        position: fixed;
-        width: 400px;
-        height: 400px;
-        background: radial-gradient(circle, rgba(212, 175, 55, 0.03) 0%, transparent 70%);
-        pointer-events: none;
-        transform: translate(-50%, -50%);
-        z-index: 9999;
-        opacity: 0;
-        transition: opacity 0.3s ease;
+      /* ========================================
+         BUTTONS
+      ======================================== */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 16px 32px;
+        font-family: var(--font-sans);
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
       }
 
-      /* Navigation */
-      nav {
+      .btn--gold {
+        background: var(--gold);
+        color: var(--black);
+      }
+
+      .btn--gold:hover {
+        background: var(--gold-light);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(201, 162, 39, 0.3);
+      }
+
+      .btn--outline {
+        background: transparent;
+        color: var(--white);
+        border: 1px solid rgba(255,255,255,0.4);
+      }
+
+      .btn--outline:hover {
+        background: rgba(255,255,255,0.1);
+        border-color: var(--white);
+      }
+
+      .btn--dark {
+        background: var(--black);
+        color: var(--white);
+      }
+
+      .btn--dark:hover {
+        background: var(--black-light);
+      }
+
+      .btn--full {
+        width: 100%;
+      }
+
+      .btn--large {
+        padding: 20px 40px;
+        font-size: 16px;
+      }
+
+      .btn__play {
+        font-size: 12px;
+      }
+
+      /* ========================================
+         NAVIGATION
+      ======================================== */
+      .nav {
         position: fixed;
         top: 0;
         left: 0;
         right: 0;
-        z-index: 100;
-        padding: 2rem 5%;
+        z-index: 1000;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        padding: 24px var(--container-padding);
+        background: rgba(13, 13, 13, 0.9);
+        backdrop-filter: blur(10px);
       }
 
-      nav.scrolled {
-        background: rgba(10, 10, 10, 0.95);
-        backdrop-filter: blur(20px);
-        padding: 1.2rem 5%;
-        border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+      .nav__logo {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
       }
 
-      .logo {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 1.8rem;
-        font-weight: 400;
-        color: var(--ivory);
-        text-decoration: none;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
+      .nav__logo-text {
+        font-family: var(--font-sans);
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        color: var(--white);
       }
 
-      .logo span {
-        color: var(--champagne);
+      .nav__logo-accent {
+        font-family: var(--font-serif);
+        font-size: 20px;
         font-style: italic;
-        font-weight: 300;
+        color: var(--gold);
       }
 
-      .nav-links {
+      .nav__links {
         display: flex;
-        gap: 3rem;
-        list-style: none;
+        align-items: center;
+        gap: 40px;
       }
 
-      .nav-links a {
-        color: var(--ivory);
-        text-decoration: none;
-        font-size: 0.8rem;
-        font-weight: 400;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        position: relative;
-        padding-bottom: 4px;
+      .nav__links a {
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        color: rgba(255,255,255,0.8);
+        transition: color 0.3s ease;
       }
 
-      .nav-links a::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0;
-        height: 1px;
-        background: var(--champagne);
-        transition: width 0.3s ease;
+      .nav__links a:hover {
+        color: var(--gold);
       }
 
-      .nav-links a:hover::after {
-        width: 100%;
+      .nav__cta {
+        padding: 10px 24px;
+        background: var(--gold);
+        color: var(--black) !important;
       }
 
-      /* Hero Section - Full immersive */
+      .nav__cta:hover {
+        background: var(--gold-light);
+      }
+
+      /* ========================================
+         HERO
+      ======================================== */
       .hero {
-        height: 100vh;
         position: relative;
+        min-height: 100vh;
         display: flex;
-        align-items: flex-end;
-        justify-content: flex-start;
+        align-items: center;
         overflow: hidden;
       }
 
-      .hero-bg {
+      .hero__bg {
         position: absolute;
         inset: 0;
-        background: url('https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=2000&q=90') center/cover;
-        transform: scale(1.05);
-        animation: heroZoom 20s ease-out forwards;
       }
 
-      @keyframes heroZoom {
-        to { transform: scale(1); }
+      .hero__bg img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
 
-      .hero-overlay {
+      .hero__overlay {
         position: absolute;
         inset: 0;
         background: linear-gradient(
-          to right,
-          rgba(10, 10, 10, 0.85) 0%,
-          rgba(10, 10, 10, 0.4) 50%,
-          rgba(10, 10, 10, 0.2) 100%
+          135deg,
+          rgba(13, 13, 13, 0.85) 0%,
+          rgba(13, 13, 13, 0.5) 50%,
+          rgba(13, 13, 13, 0.3) 100%
         );
       }
 
-      .hero-content {
+      .hero__content {
         position: relative;
         z-index: 2;
-        padding: 8rem 5%;
-        max-width: 700px;
+        max-width: 650px;
+        padding: 120px var(--container-padding);
+        color: var(--white);
       }
 
-      .hero-tag {
+      .hero__eyebrow {
         display: inline-flex;
         align-items: center;
-        gap: 1rem;
-        font-size: 0.75rem;
-        letter-spacing: 0.3em;
+        gap: 16px;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 3px;
         text-transform: uppercase;
-        color: var(--champagne);
-        margin-bottom: 2rem;
+        color: var(--gold);
+        margin-bottom: 24px;
       }
 
-      .hero-tag::before {
+      .hero__eyebrow::before {
         content: '';
         width: 40px;
         height: 1px;
-        background: var(--champagne);
+        background: var(--gold);
       }
 
-      .hero h1 {
-        font-size: clamp(3rem, 7vw, 5.5rem);
-        font-weight: 300;
+      .hero__title {
+        font-size: clamp(42px, 6vw, 72px);
+        font-weight: 400;
         line-height: 1.1;
-        margin-bottom: 2rem;
+        margin-bottom: 24px;
       }
 
-      .hero h1 em {
+      .hero__title em {
         font-style: italic;
-        color: var(--champagne);
+        color: var(--gold);
       }
 
-      .hero-description {
-        font-size: 1.1rem;
-        line-height: 1.8;
-        color: rgba(250, 248, 245, 0.7);
-        margin-bottom: 3rem;
+      .hero__desc {
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 1.7;
+        color: rgba(255,255,255,0.8);
+        margin-bottom: 40px;
         max-width: 500px;
       }
 
-      .btn-group {
+      .hero__actions {
         display: flex;
-        gap: 1.5rem;
+        gap: 16px;
         flex-wrap: wrap;
       }
 
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.75rem;
-        padding: 1.2rem 2.5rem;
-        font-family: 'Outfit', sans-serif;
-        font-size: 0.8rem;
-        font-weight: 400;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        text-decoration: none;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        cursor: pointer;
-        border: none;
-      }
-
-      .btn-primary {
-        background: var(--champagne);
-        color: var(--noir);
-      }
-
-      .btn-primary:hover {
-        background: var(--champagne-light);
-        transform: translateY(-3px);
-        box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);
-      }
-
-      .btn-outline {
-        border: 1px solid rgba(250, 248, 245, 0.3);
-        color: var(--ivory);
-        background: transparent;
-      }
-
-      .btn-outline:hover {
-        border-color: var(--champagne);
-        color: var(--champagne);
-        background: rgba(212, 175, 55, 0.05);
-      }
-
-      /* Scroll indicator */
-      .scroll-indicator {
+      .hero__scroll {
         position: absolute;
-        bottom: 3rem;
-        right: 5%;
+        bottom: 40px;
+        right: var(--container-padding);
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 1rem;
-        color: var(--muted);
-        font-size: 0.7rem;
-        letter-spacing: 0.2em;
+        gap: 12px;
+        color: rgba(255,255,255,0.5);
+        font-size: 11px;
+        letter-spacing: 2px;
         text-transform: uppercase;
       }
 
-      .scroll-line {
+      .hero__scroll-line {
         width: 1px;
         height: 60px;
-        background: linear-gradient(to bottom, var(--champagne), transparent);
-        animation: scrollPulse 2s ease-in-out infinite;
+        background: linear-gradient(to bottom, var(--gold), transparent);
       }
 
-      @keyframes scrollPulse {
-        0%, 100% { opacity: 1; transform: scaleY(1); }
-        50% { opacity: 0.5; transform: scaleY(0.8); }
-      }
-
-      /* Intro Section */
-      .intro {
-        padding: 10rem 5%;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 6rem;
-        align-items: center;
-        max-width: 1600px;
-        margin: 0 auto;
-      }
-
-      .intro-content h2 {
-        font-size: 3rem;
-        line-height: 1.2;
-        margin-bottom: 2rem;
-      }
-
-      .intro-content p {
-        font-size: 1.05rem;
-        line-height: 2;
-        color: var(--muted);
-        margin-bottom: 2rem;
-      }
-
-      .intro-stats {
-        display: flex;
-        gap: 4rem;
-        margin-top: 3rem;
-        padding-top: 3rem;
-        border-top: 1px solid rgba(255,255,255,0.1);
-      }
-
-      .stat {
-        text-align: left;
-      }
-
-      .stat-number {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 3rem;
-        color: var(--champagne);
-        font-weight: 300;
-      }
-
-      .stat-label {
-        font-size: 0.75rem;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        color: var(--muted);
-        margin-top: 0.5rem;
-      }
-
-      .intro-images {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1.5rem;
-      }
-
-      .intro-img {
-        aspect-ratio: 3/4;
-        background-size: cover;
-        background-position: center;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .intro-img:first-child {
-        margin-top: 3rem;
-      }
-
-      .intro-img::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to top, rgba(10,10,10,0.3), transparent);
-      }
-
-      /* Properties Section */
-      .properties {
-        padding: 8rem 5%;
-        background: var(--noir-light);
-      }
-
+      /* ========================================
+         SECTION HEADER
+      ======================================== */
       .section-header {
         text-align: center;
-        margin-bottom: 5rem;
+        margin-bottom: 60px;
       }
 
-      .section-tag {
+      .section-header__tag {
         display: inline-flex;
         align-items: center;
-        gap: 1rem;
-        font-size: 0.75rem;
-        letter-spacing: 0.3em;
+        gap: 16px;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 3px;
         text-transform: uppercase;
-        color: var(--champagne);
-        margin-bottom: 1.5rem;
+        color: var(--gold);
+        margin-bottom: 16px;
       }
 
-      .section-tag::before,
-      .section-tag::after {
+      .section-header__tag::before,
+      .section-header__tag::after {
         content: '';
         width: 30px;
         height: 1px;
-        background: var(--champagne);
+        background: var(--gold);
       }
 
-      .section-header h2 {
-        font-size: clamp(2.5rem, 5vw, 4rem);
-        font-weight: 300;
+      .section-header__tag--light {
+        color: var(--gold-light);
       }
 
-      .properties-grid {
+      .section-header__tag--light::before,
+      .section-header__tag--light::after {
+        background: var(--gold-light);
+      }
+
+      .section-header__title {
+        font-size: clamp(32px, 4vw, 48px);
+        color: var(--black);
+      }
+
+      /* ========================================
+         VILLAS
+      ======================================== */
+      .villas {
+        padding: var(--section-padding) 0;
+        background: var(--ivory);
+      }
+
+      .villas__grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
-        max-width: 1600px;
-        margin: 0 auto;
+        gap: 32px;
       }
 
-      .property-card {
-        position: relative;
-        aspect-ratio: 3/4;
+      .villa-card {
+        background: var(--white);
         overflow: hidden;
-        cursor: pointer;
-        group: true;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
 
-      .property-image {
-        position: absolute;
-        inset: 0;
-        background-size: cover;
-        background-position: center;
-        transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      .villa-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 60px rgba(0,0,0,0.1);
       }
 
-      .property-card:hover .property-image {
+      .villa-card__image {
+        position: relative;
+        aspect-ratio: 4/3;
+        overflow: hidden;
+      }
+
+      .villa-card__image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+      }
+
+      .villa-card:hover .villa-card__image img {
         transform: scale(1.08);
       }
 
-      .property-overlay {
+      .villa-card__badge {
         position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          to top,
-          rgba(10, 10, 10, 0.9) 0%,
-          rgba(10, 10, 10, 0.3) 40%,
-          transparent 100%
-        );
-        transition: all 0.4s ease;
+        top: 16px;
+        left: 16px;
+        padding: 8px 16px;
+        background: var(--gold);
+        color: var(--black);
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
       }
 
-      .property-card:hover .property-overlay {
-        background: linear-gradient(
-          to top,
-          rgba(10, 10, 10, 0.95) 0%,
-          rgba(10, 10, 10, 0.5) 50%,
-          rgba(10, 10, 10, 0.2) 100%
-        );
+      .villa-card__content {
+        padding: 28px;
       }
 
-      .property-badge {
-        position: absolute;
-        top: 1.5rem;
-        left: 1.5rem;
-        background: var(--champagne);
-        color: var(--noir);
-        padding: 0.5rem 1rem;
-        font-size: 0.65rem;
+      .villa-card__location {
+        font-size: 12px;
         font-weight: 500;
-        letter-spacing: 0.15em;
+        letter-spacing: 2px;
         text-transform: uppercase;
+        color: var(--gold-dark);
+        margin-bottom: 8px;
       }
 
-      .property-content {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        padding: 2rem;
-        transform: translateY(20px);
-        opacity: 0.9;
-        transition: all 0.4s ease;
+      .villa-card__title {
+        font-size: 24px;
+        margin-bottom: 12px;
+        color: var(--black);
       }
 
-      .property-card:hover .property-content {
-        transform: translateY(0);
-        opacity: 1;
+      .villa-card__desc {
+        font-size: 14px;
+        color: var(--gray-600);
+        margin-bottom: 20px;
+        line-height: 1.6;
       }
 
-      .property-location {
-        font-size: 0.7rem;
-        color: var(--champagne);
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        margin-bottom: 0.75rem;
-      }
-
-      .property-title {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 1.8rem;
-        font-weight: 400;
-        margin-bottom: 1rem;
-        line-height: 1.3;
-      }
-
-      .property-features {
+      .villa-card__features {
         display: flex;
-        gap: 1.5rem;
-        font-size: 0.8rem;
-        color: var(--muted);
-        margin-bottom: 1.5rem;
-        padding-bottom: 1.5rem;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
+        flex-wrap: wrap;
+        gap: 8px 16px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid var(--gray-200);
+        margin-bottom: 20px;
       }
 
-      .property-price {
+      .villa-card__features li {
+        font-size: 13px;
+        color: var(--gray-600);
+      }
+
+      .villa-card__footer {
         display: flex;
         justify-content: space-between;
         align-items: center;
       }
 
-      .price {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 1.5rem;
+      .villa-card__price {
+        font-family: var(--font-serif);
+        font-size: 22px;
+        color: var(--black);
       }
 
-      .price span {
-        font-family: 'Outfit', sans-serif;
-        font-size: 0.8rem;
-        color: var(--muted);
+      .villa-card__price small {
+        font-family: var(--font-sans);
+        font-size: 13px;
+        color: var(--gray-600);
       }
 
-      .view-btn {
-        font-size: 0.7rem;
-        color: var(--champagne);
-        text-decoration: none;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        transition: gap 0.3s ease;
+      .villa-card__link {
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--gold-dark);
+        transition: color 0.3s ease;
       }
 
-      .view-btn:hover {
-        gap: 0.8rem;
+      .villa-card__link:hover {
+        color: var(--gold);
       }
 
-      /* 3D Virtual Tour Section */
-      .tour-section {
-        padding: 10rem 5%;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .tour-bg {
-        position: absolute;
-        inset: 0;
-        background: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=2000&q=85') center/cover;
-        opacity: 0.15;
-      }
-
-      .tour-container {
-        max-width: 1400px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: 1fr 1.2fr;
-        gap: 6rem;
-        align-items: center;
-        position: relative;
-        z-index: 2;
-      }
-
-      .tour-content h2 {
-        font-size: 3.5rem;
-        line-height: 1.15;
-        margin-bottom: 2rem;
-      }
-
-      .tour-content h2 em {
-        font-style: italic;
-        color: var(--champagne);
-      }
-
-      .tour-content p {
-        font-size: 1.05rem;
-        line-height: 2;
-        color: var(--muted);
-        margin-bottom: 2.5rem;
-      }
-
-      .tour-features {
-        list-style: none;
-        margin-bottom: 3rem;
-      }
-
-      .tour-features li {
-        padding: 1rem 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        display: flex;
-        align-items: center;
-        gap: 1.5rem;
-        font-size: 0.95rem;
-        color: rgba(250, 248, 245, 0.8);
-      }
-
-      .tour-features li::before {
-        content: "✦";
-        color: var(--champagne);
-        font-size: 0.6rem;
-      }
-
-      .tour-preview {
-        position: relative;
-        aspect-ratio: 16/10;
-        border: 1px solid rgba(212, 175, 55, 0.2);
-        overflow: hidden;
-      }
-
-      .tour-preview-inner {
-        position: absolute;
-        inset: 0;
-        background: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=85') center/cover;
-        transition: transform 0.6s ease;
-      }
-
-      .tour-preview:hover .tour-preview-inner {
-        transform: scale(1.05);
-      }
-
-      .tour-preview-overlay {
-        position: absolute;
-        inset: 0;
-        background: rgba(10, 10, 10, 0.4);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .play-button {
-        width: 100px;
-        height: 100px;
-        background: var(--champagne);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        position: relative;
-      }
-
-      .play-button::before {
-        content: '';
-        position: absolute;
-        inset: -15px;
-        border: 1px solid rgba(212, 175, 55, 0.3);
-        border-radius: 50%;
-        animation: playPulse 2s ease-in-out infinite;
-      }
-
-      @keyframes playPulse {
-        0%, 100% { transform: scale(1); opacity: 1; }
-        50% { transform: scale(1.1); opacity: 0.5; }
-      }
-
-      .play-button::after {
-        content: "";
-        border-left: 18px solid var(--noir);
-        border-top: 11px solid transparent;
-        border-bottom: 11px solid transparent;
-        margin-left: 5px;
-      }
-
-      .play-button:hover {
-        transform: scale(1.1);
-        box-shadow: 0 0 60px rgba(212, 175, 55, 0.4);
-      }
-
-      .tour-label {
-        position: absolute;
-        bottom: 2rem;
-        left: 2rem;
-        background: rgba(10, 10, 10, 0.8);
-        backdrop-filter: blur(10px);
-        padding: 1rem 1.5rem;
-        font-size: 0.75rem;
-        letter-spacing: 0.1em;
-        border: 1px solid rgba(212, 175, 55, 0.2);
-      }
-
-      /* Experience Section */
-      .experience {
-        padding: 10rem 5%;
-        background: var(--ivory);
-        color: var(--noir);
-      }
-
-      .experience .section-tag {
-        color: var(--champagne-dark);
-      }
-
-      .experience .section-tag::before,
-      .experience .section-tag::after {
-        background: var(--champagne-dark);
-      }
-
-      .experience .section-header h2 {
-        color: var(--noir);
-      }
-
-      .features-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 3rem;
-        max-width: 1400px;
-        margin: 0 auto;
-      }
-
-      .feature-card {
+      .villas__cta {
         text-align: center;
-        padding: 3rem 2rem;
-        background: var(--ivory-warm);
-        transition: all 0.4s ease;
+        margin-top: 50px;
       }
 
-      .feature-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+      /* ========================================
+         EXPERIENCE
+      ======================================== */
+      .experience {
+        padding: var(--section-padding) 0;
+        background: var(--white);
       }
 
-      .feature-icon {
-        width: 70px;
-        height: 70px;
-        margin: 0 auto 2rem;
-        background: var(--noir);
-        color: var(--champagne);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.8rem;
-      }
-
-      .feature-card h3 {
-        font-size: 1.3rem;
-        color: var(--noir);
-        margin-bottom: 1rem;
-        font-weight: 400;
-      }
-
-      .feature-card p {
-        font-size: 0.9rem;
-        color: var(--slate);
-        line-height: 1.7;
-      }
-
-      /* Contact Section */
-      .contact {
-        padding: 10rem 5%;
-        background: var(--noir);
-      }
-
-      .contact-container {
-        max-width: 900px;
-        margin: 0 auto;
-      }
-
-      .contact .section-header {
-        margin-bottom: 4rem;
-      }
-
-      .contact .section-header p {
-        color: var(--muted);
-        font-size: 1.1rem;
-        margin-top: 1rem;
-      }
-
-      .contact-form {
+      .experience__layout {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 2rem;
+        gap: 80px;
+        align-items: center;
+      }
+
+      .experience__content .section-header__tag {
+        justify-content: flex-start;
+      }
+
+      .experience__content .section-header__tag::before {
+        display: none;
+      }
+
+      .experience__content .section-header__title {
+        text-align: left;
+        margin-bottom: 24px;
+      }
+
+      .experience__intro {
+        font-size: 17px;
+        color: var(--gray-600);
+        line-height: 1.8;
+        margin-bottom: 40px;
+      }
+
+      .experience__features {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .exp-feature {
+        display: flex;
+        gap: 20px;
+        padding: 20px;
+        background: var(--gray-100);
+        transition: background 0.3s ease;
+      }
+
+      .exp-feature:hover {
+        background: var(--ivory);
+      }
+
+      .exp-feature__icon {
+        font-size: 28px;
+        width: 50px;
+        flex-shrink: 0;
+      }
+
+      .exp-feature__text h4 {
+        font-family: var(--font-sans);
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 6px;
+        color: var(--black);
+      }
+
+      .exp-feature__text p {
+        font-size: 14px;
+        color: var(--gray-600);
+        line-height: 1.5;
+      }
+
+      .experience__images {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .experience__img {
+        object-fit: cover;
+      }
+
+      .experience__img--1 {
+        aspect-ratio: 3/4;
+        margin-top: 40px;
+      }
+
+      .experience__img--2 {
+        aspect-ratio: 3/4;
+      }
+
+      /* ========================================
+         VIRTUAL TOUR
+      ======================================== */
+      .virtual-tour {
+        position: relative;
+        padding: var(--section-padding) 0;
+        min-height: 600px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        overflow: hidden;
+      }
+
+      .virtual-tour__bg {
+        position: absolute;
+        inset: 0;
+      }
+
+      .virtual-tour__bg img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .virtual-tour__overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(13, 13, 13, 0.75);
+      }
+
+      .virtual-tour__content {
+        position: relative;
+        z-index: 2;
+        max-width: 600px;
+        color: var(--white);
+      }
+
+      .virtual-tour__title {
+        font-size: clamp(32px, 5vw, 52px);
+        color: var(--white);
+        margin-bottom: 20px;
+      }
+
+      .virtual-tour__desc {
+        font-size: 17px;
+        line-height: 1.8;
+        color: rgba(255,255,255,0.8);
+        margin-bottom: 36px;
+      }
+
+      /* ========================================
+         STATS
+      ======================================== */
+      .stats {
+        padding: 80px 0;
+        background: var(--black);
+      }
+
+      .stats__grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px;
+        text-align: center;
+      }
+
+      .stat__number {
+        display: block;
+        font-family: var(--font-serif);
+        font-size: clamp(40px, 5vw, 56px);
+        color: var(--gold);
+        margin-bottom: 8px;
+      }
+
+      .stat__label {
+        font-size: 13px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.6);
+      }
+
+      /* ========================================
+         CONTACT
+      ======================================== */
+      .contact {
+        padding: var(--section-padding) 0;
+        background: var(--ivory);
+      }
+
+      .contact__layout {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        gap: 80px;
+        align-items: start;
+      }
+
+      .contact__info .section-header__tag {
+        justify-content: flex-start;
+      }
+
+      .contact__info .section-header__tag::before {
+        display: none;
+      }
+
+      .contact__info .section-header__title {
+        text-align: left;
+        margin-bottom: 20px;
+      }
+
+      .contact__intro {
+        font-size: 16px;
+        color: var(--gray-600);
+        line-height: 1.7;
+        margin-bottom: 40px;
+      }
+
+      .contact__details {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .contact__item strong {
+        display: block;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: var(--gray-400);
+        margin-bottom: 4px;
+      }
+
+      .contact__item a {
+        font-size: 16px;
+        color: var(--black);
+        transition: color 0.3s ease;
+      }
+
+      .contact__item a:hover {
+        color: var(--gold);
+      }
+
+      .contact__form {
+        background: var(--white);
+        padding: 40px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
       }
 
       .form-group {
-        display: flex;
-        flex-direction: column;
-      }
-
-      .form-group.full-width {
-        grid-column: span 2;
+        margin-bottom: 24px;
       }
 
       .form-group label {
-        font-size: 0.7rem;
-        font-weight: 400;
-        margin-bottom: 0.75rem;
-        color: var(--champagne);
-        letter-spacing: 0.2em;
+        display: block;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 1px;
         text-transform: uppercase;
+        color: var(--gray-600);
+        margin-bottom: 8px;
       }
 
       .form-group input,
-      .form-group textarea,
-      .form-group select {
-        padding: 1.25rem;
-        background: transparent;
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        color: var(--ivory);
-        font-family: 'Outfit', sans-serif;
-        font-size: 1rem;
-        font-weight: 300;
-        transition: all 0.3s ease;
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        padding: 14px 16px;
+        font-family: var(--font-sans);
+        font-size: 15px;
+        border: 1px solid var(--gray-200);
+        background: var(--white);
+        color: var(--black);
+        transition: border-color 0.3s ease;
+      }
+
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--gold);
       }
 
       .form-group input::placeholder,
       .form-group textarea::placeholder {
-        color: var(--muted);
-      }
-
-      .form-group input:focus,
-      .form-group textarea:focus,
-      .form-group select:focus {
-        outline: none;
-        border-color: var(--champagne);
-        background: rgba(212, 175, 55, 0.03);
-      }
-
-      .form-group select {
-        cursor: pointer;
-      }
-
-      .form-group select option {
-        background: var(--noir);
-        color: var(--ivory);
+        color: var(--gray-400);
       }
 
       .form-group textarea {
         resize: vertical;
-        min-height: 150px;
+        min-height: 100px;
       }
 
-      .contact-form .btn {
-        grid-column: span 2;
-        justify-self: center;
-        margin-top: 2rem;
-        min-width: 250px;
-        justify-content: center;
+      /* ========================================
+         FOOTER
+      ======================================== */
+      .footer {
+        background: var(--black);
+        color: var(--white);
+        padding: 80px 0 40px;
       }
 
-      /* Footer */
-      footer {
-        background: var(--noir-light);
-        padding: 5rem 5%;
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
+      .footer__top {
+        display: grid;
+        grid-template-columns: 1.5fr 2fr;
+        gap: 80px;
+        padding-bottom: 60px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
       }
 
-      .footer-content {
-        max-width: 1400px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+      .footer__brand p {
+        margin-top: 20px;
+        font-size: 14px;
+        color: rgba(255,255,255,0.5);
+        max-width: 280px;
+        line-height: 1.6;
       }
 
-      .footer-logo {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 1.5rem;
-        color: var(--ivory);
-        letter-spacing: 0.15em;
+      .footer__links {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+      }
+
+      .footer__col h5 {
+        font-family: var(--font-sans);
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 1px;
         text-transform: uppercase;
+        margin-bottom: 20px;
+        color: var(--white);
       }
 
-      .footer-logo span {
-        color: var(--champagne);
-        font-style: italic;
-      }
-
-      .footer-links {
+      .footer__col ul {
         display: flex;
-        gap: 3rem;
-        list-style: none;
+        flex-direction: column;
+        gap: 12px;
       }
 
-      .footer-links a {
-        color: var(--muted);
-        text-decoration: none;
-        font-size: 0.8rem;
-        letter-spacing: 0.1em;
+      .footer__col a {
+        font-size: 14px;
+        color: rgba(255,255,255,0.5);
         transition: color 0.3s ease;
       }
 
-      .footer-links a:hover {
-        color: var(--champagne);
+      .footer__col a:hover {
+        color: var(--gold);
       }
 
-      .footer-bottom {
-        max-width: 1400px;
-        margin: 3rem auto 0;
-        padding-top: 3rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
+      .footer__bottom {
+        padding-top: 40px;
         text-align: center;
-        font-size: 0.8rem;
-        color: var(--muted);
+        font-size: 13px;
+        color: rgba(255,255,255,0.4);
       }
 
-      /* Responsive */
-      @media (max-width: 1200px) {
-        .properties-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .features-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-
+      /* ========================================
+         RESPONSIVE
+      ======================================== */
       @media (max-width: 1024px) {
-        .intro {
-          grid-template-columns: 1fr;
-          gap: 4rem;
+        .villas__grid {
+          grid-template-columns: repeat(2, 1fr);
         }
 
-        .intro-images {
+        .experience__layout {
+          grid-template-columns: 1fr;
+          gap: 60px;
+        }
+
+        .experience__images {
           order: -1;
         }
 
-        .tour-container {
+        .contact__layout {
           grid-template-columns: 1fr;
-          gap: 4rem;
+          gap: 60px;
+        }
+
+        .stats__grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .footer__top {
+          grid-template-columns: 1fr;
+          gap: 60px;
         }
       }
 
       @media (max-width: 768px) {
-        .nav-links {
+        .nav__links {
           display: none;
         }
 
-        .hero h1 {
-          font-size: 2.5rem;
+        .hero__content {
+          padding: 100px var(--container-padding) 80px;
         }
 
-        .hero-content {
-          padding: 4rem 5%;
+        .hero__scroll {
+          display: none;
         }
 
-        .properties-grid {
+        .villas__grid {
           grid-template-columns: 1fr;
         }
 
-        .features-grid {
+        .experience__images {
           grid-template-columns: 1fr;
         }
 
-        .contact-form {
+        .experience__img--1 {
+          margin-top: 0;
+        }
+
+        .stats__grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 40px 20px;
+        }
+
+        .form-row {
           grid-template-columns: 1fr;
         }
 
-        .form-group.full-width {
-          grid-column: span 1;
+        .contact__form {
+          padding: 30px 24px;
         }
 
-        .contact-form .btn {
-          grid-column: span 1;
-          width: 100%;
+        .footer__links {
+          grid-template-columns: repeat(2, 1fr);
         }
-
-        .footer-content {
-          flex-direction: column;
-          gap: 2rem;
-          text-align: center;
-        }
-
-        .footer-links {
-          flex-wrap: wrap;
-          justify-content: center;
-        }
-
-        .intro-stats {
-          flex-wrap: wrap;
-          gap: 2rem;
-        }
-      }
-
-      /* Smooth reveal animations */
-      .reveal {
-        opacity: 0;
-        transform: translateY(40px);
-        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      .reveal.visible {
-        opacity: 1;
-        transform: translateY(0);
       }
     </style>
-  </head>
-  <body>
-    <!-- Navigation -->
-    <nav id="navbar">
-      <a href="/" class="logo">Adriatic <span>Prestige</span></a>
-      <ul class="nav-links">
-        <li><a href="#properties">Residences</a></li>
-        <li><a href="#tour">Virtual Tour</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#contact">Inquire</a></li>
-      </ul>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="hero-bg"></div>
-      <div class="hero-overlay"></div>
-      <div class="hero-content">
-        <p class="hero-tag">Exclusive Croatian Escapes</p>
-        <h1>Where Adriatic <em>Elegance</em> Meets Home</h1>
-        <p class="hero-description">
-          Discover an unparalleled collection of private villas and luxury apartments 
-          along Croatia's most coveted coastline. Each residence is a masterwork of 
-          design, privacy, and breathtaking Mediterranean views.
-        </p>
-        <div class="btn-group">
-          <a href="#properties" class="btn btn-primary">Explore Residences</a>
-          <a href="#tour" class="btn btn-outline">Virtual Walkthrough</a>
-        </div>
-      </div>
-      <div class="scroll-indicator">
-        <span>Scroll</span>
-        <div class="scroll-line"></div>
-      </div>
-    </section>
-
-    <!-- Intro Section -->
-    <section class="intro">
-      <div class="intro-content reveal">
-        <h2>A Legacy of Mediterranean Luxury</h2>
-        <p>
-          For over a decade, we have curated the finest private residences along the 
-          Dalmatian Coast. From ancient Dubrovnik to the lavender fields of Hvar, 
-          our portfolio represents the pinnacle of Croatian hospitality.
-        </p>
-        <p>
-          Each property in our collection has been personally selected for its 
-          exceptional architecture, premium amenities, and the ineffable quality 
-          that transforms a vacation into a cherished memory.
-        </p>
-        <div class="intro-stats">
-          <div class="stat">
-            <div class="stat-number">50+</div>
-            <div class="stat-label">Exclusive Properties</div>
-          </div>
-          <div class="stat">
-            <div class="stat-number">12</div>
-            <div class="stat-label">Years of Excellence</div>
-          </div>
-          <div class="stat">
-            <div class="stat-number">98%</div>
-            <div class="stat-label">Guest Satisfaction</div>
-          </div>
-        </div>
-      </div>
-      <div class="intro-images reveal">
-        <div class="intro-img" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=85')"></div>
-        <div class="intro-img" style="background-image: url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=85')"></div>
-      </div>
-    </section>
-
-    <!-- Properties Section -->
-    <section class="properties" id="properties">
-      <div class="section-header">
-        <p class="section-tag">The Collection</p>
-        <h2>Featured Residences</h2>
-      </div>
-      <div class="properties-grid">
-        <!-- Property 1 -->
-        <div class="property-card reveal">
-          <div class="property-image" style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=85')"></div>
-          <div class="property-overlay"></div>
-          <span class="property-badge">Signature</span>
-          <div class="property-content">
-            <p class="property-location">Dubrovnik · Old Town</p>
-            <h3 class="property-title">Villa Ragusa Panorama</h3>
-            <div class="property-features">
-              <span>4 Suites</span>
-              <span>280 m²</span>
-              <span>Sea View</span>
-            </div>
-            <div class="property-price">
-              <p class="price">€890 <span>/ night</span></p>
-              <a href="#" class="view-btn">Discover →</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Property 2 -->
-        <div class="property-card reveal">
-          <div class="property-image" style="background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=85')"></div>
-          <div class="property-overlay"></div>
-          <span class="property-badge">Waterfront</span>
-          <div class="property-content">
-            <p class="property-location">Split · Diocletian Palace</p>
-            <h3 class="property-title">Palazzo Adriatico Loft</h3>
-            <div class="property-features">
-              <span>3 Suites</span>
-              <span>185 m²</span>
-              <span>Private Terrace</span>
-            </div>
-            <div class="property-price">
-              <p class="price">€650 <span>/ night</span></p>
-              <a href="#" class="view-btn">Discover →</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Property 3 -->
-        <div class="property-card reveal">
-          <div class="property-image" style="background-image: url('https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=85')"></div>
-          <div class="property-overlay"></div>
-          <span class="property-badge">Island Estate</span>
-          <div class="property-content">
-            <p class="property-location">Hvar · Lavender Bay</p>
-            <h3 class="property-title">Villa Lavanda Retreat</h3>
-            <div class="property-features">
-              <span>5 Suites</span>
-              <span>420 m²</span>
-              <span>Infinity Pool</span>
-            </div>
-            <div class="property-price">
-              <p class="price">€1,450 <span>/ night</span></p>
-              <a href="#" class="view-btn">Discover →</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3D Tour Section -->
-    <section class="tour-section" id="tour">
-      <div class="tour-bg"></div>
-      <div class="tour-container">
-        <div class="tour-content reveal">
-          <h2>Experience Before You <em>Arrive</em></h2>
-          <p>
-            Our immersive 3D virtual tours allow you to explore every corner of our 
-            residences from anywhere in the world. Walk through sun-drenched living 
-            spaces, admire the views from private terraces, and envision your 
-            perfect Adriatic escape.
-          </p>
-          <ul class="tour-features">
-            <li>Photorealistic 360° interior walkthroughs</li>
-            <li>Interactive floor plans with measurements</li>
-            <li>Day and twilight lighting simulations</li>
-            <li>Neighborhood and surroundings preview</li>
-          </ul>
-          <a href="#" class="btn btn-primary">Begin Virtual Tour</a>
-        </div>
-        <div class="tour-preview reveal">
-          <div class="tour-preview-inner"></div>
-          <div class="tour-preview-overlay">
-            <div class="play-button"></div>
-          </div>
-          <span class="tour-label">Villa Ragusa Panorama · Dubrovnik</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section class="experience" id="experience">
-      <div class="section-header">
-        <p class="section-tag">The Experience</p>
-        <h2>Beyond Accommodation</h2>
-      </div>
-      <div class="features-grid">
-        <div class="feature-card reveal">
-          <div class="feature-icon">⚓</div>
-          <h3>Private Yacht Charter</h3>
-          <p>Explore hidden coves and islands aboard our curated fleet of luxury vessels with experienced crew.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon">🍷</div>
-          <h3>Sommelier Service</h3>
-          <p>Private tastings of Croatia's finest wines paired with gourmet cuisine prepared in your residence.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon">✦</div>
-          <h3>Concierge 24/7</h3>
-          <p>Your dedicated lifestyle manager arranges everything from restaurant reservations to helicopter transfers.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon">☀</div>
-          <h3>Bespoke Experiences</h3>
-          <p>From private Game of Thrones tours to truffle hunting in Istria, we craft unforgettable moments.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-      <div class="contact-container">
-        <div class="section-header">
-          <p class="section-tag">Begin Your Journey</p>
-          <h2>Private Inquiry</h2>
-          <p>Our specialists are ready to curate your perfect Croatian escape</p>
-        </div>
-        <form class="contact-form">
-          <div class="form-group">
-            <label>First Name</label>
-            <input type="text" placeholder="Enter your first name">
-          </div>
-          <div class="form-group">
-            <label>Last Name</label>
-            <input type="text" placeholder="Enter your last name">
-          </div>
-          <div class="form-group">
-            <label>Email Address</label>
-            <input type="email" placeholder="your@email.com">
-          </div>
-          <div class="form-group">
-            <label>Phone Number</label>
-            <input type="tel" placeholder="+385 XX XXX XXXX">
-          </div>
-          <div class="form-group">
-            <label>Preferred Residence</label>
-            <select>
-              <option>Select a residence</option>
-              <option>Villa Ragusa Panorama · Dubrovnik</option>
-              <option>Palazzo Adriatico Loft · Split</option>
-              <option>Villa Lavanda Retreat · Hvar</option>
-              <option>Not sure yet — please advise</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Preferred Dates</label>
-            <input type="text" placeholder="e.g., July 15-22, 2026">
-          </div>
-          <div class="form-group full-width">
-            <label>Your Vision</label>
-            <textarea placeholder="Tell us about your ideal Croatian experience..."></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Submit Inquiry</button>
-        </form>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-      <div class="footer-content">
-        <p class="footer-logo">Adriatic <span>Prestige</span></p>
-        <ul class="footer-links">
-          <li><a href="#properties">Residences</a></li>
-          <li><a href="#tour">Virtual Tours</a></li>
-          <li><a href="#experience">Experiences</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-        </ul>
-      </div>
-      <p class="footer-bottom">© 2026 Adriatic Prestige. All rights reserved. Luxury Croatian Vacation Rentals.</p>
-    </footer>
-
-    <script>
-      // Navbar scroll effect
-      const navbar = document.getElementById('navbar');
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) {
-          navbar.classList.add('scrolled');
-        } else {
-          navbar.classList.remove('scrolled');
-        }
-      });
-
-      // Reveal animations on scroll
-      const reveals = document.querySelectorAll('.reveal');
-      const revealOnScroll = () => {
-        reveals.forEach(el => {
-          const top = el.getBoundingClientRect().top;
-          if (top < window.innerHeight - 100) {
-            el.classList.add('visible');
-          }
-        });
-      };
-      window.addEventListener('scroll', revealOnScroll);
-      revealOnScroll();
-    </script>
   </body>
 </html>
