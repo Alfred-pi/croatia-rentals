@@ -211,22 +211,44 @@ const press = [
     </div>
     <div class="services__grid">
       <div class="service reveal">
-        <span class="service__icon">🛎️</span>
+        <div class="service__icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+        </div>
         <h4>Concierge</h4>
         <p>24/7 dedicated support for reservations, recommendations, and every need during your stay.</p>
       </div>
       <div class="service reveal">
-        <span class="service__icon">👨‍🍳</span>
+        <div class="service__icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6V13.87Z"/>
+            <line x1="6" y1="17" x2="18" y2="17"/>
+          </svg>
+        </div>
         <h4>Private Chef</h4>
         <p>Authentic Croatian cuisine prepared by acclaimed chefs in the comfort of your villa.</p>
       </div>
       <div class="service reveal">
-        <span class="service__icon">⛵</span>
+        <div class="service__icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M2 20L12 4l10 16H2z"/>
+            <path d="M12 20V10"/>
+          </svg>
+        </div>
         <h4>Yacht Charter</h4>
         <p>Explore hidden islands and secluded coves aboard a luxury private yacht.</p>
       </div>
       <div class="service reveal">
-        <span class="service__icon">🚗</span>
+        <div class="service__icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="1" y="3" width="15" height="13" rx="2"/>
+            <path d="M16 8h4l3 3v5h-7V8z"/>
+            <circle cx="5.5" cy="18.5" r="2.5"/>
+            <circle cx="18.5" cy="18.5" r="2.5"/>
+          </svg>
+        </div>
         <h4>Transfers</h4>
         <p>Seamless airport pickups and luxury transportation throughout your journey.</p>
       </div>
@@ -873,15 +895,33 @@ const press = [
   }
   
   .service {
-    padding-top: 24px;
-    border-top: 1px solid rgba(0,0,0,0.1);
+    padding: 48px 32px;
+    border: 1px solid rgba(0,0,0,0.08);
     text-align: center;
+    transition: all 0.4s;
+  }
+  
+  .service:hover {
+    border-color: var(--gold);
   }
   
   .service__icon {
-    font-size: 32px;
-    display: block;
-    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 24px;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 50%;
+    color: var(--gold);
+    transition: all 0.4s;
+  }
+  
+  .service:hover .service__icon {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--white);
   }
   
   .service h4 {
