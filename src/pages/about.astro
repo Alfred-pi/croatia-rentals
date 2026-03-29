@@ -1,330 +1,150 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL;
 ---
 
-<Layout title="About Us" description="Learn about Dalmatia Estates - over a decade of curating exceptional Croatian villa experiences">
-  <header class="page-header">
-    <span class="page-header__tag">Our Story</span>
-    <h1 class="page-header__title">A Decade of Croatian Excellence</h1>
-    <p class="page-header__desc">
-      Founded in 2014, Dalmatia Estates has become the trusted name in luxury 
-      Croatian villa rentals, serving discerning travelers from around the world.
-    </p>
-  </header>
-  
-  <section class="about-intro">
-    <div class="about-intro__image">
-      <img src="https://images.unsplash.com/photo-1555990538-1e7a7210d4c3?w=1200&q=85&auto=format" alt="Croatian coastline" loading="lazy" />
+<Layout title="About — ADRIATIC">
+  <section class="page-header">
+    <span>About</span>
+    <h1>Our Story</h1>
+  </section>
+
+  <section class="story">
+    <div class="story__image">
+      <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=800&q=85&auto=format" alt="Croatian coast" />
     </div>
-    <div class="about-intro__content">
-      <h2>Passionate about <em>Croatia</em></h2>
-      <p>
-        Our journey began with a simple belief: that Croatia's extraordinary coastline 
-        deserves to be experienced in equally extraordinary accommodations. What started 
-        as a small collection of three villas in Dubrovnik has grown into a curated 
-        portfolio of over 48 exceptional properties along the Dalmatian Coast.
-      </p>
-      <p>
-        Every estate in our collection has been personally visited and vetted by our 
-        team. We look beyond the obvious—seeking properties with soul, history, and 
-        that ineffable quality that transforms a vacation into a cherished memory.
-      </p>
+    <div class="story__content">
+      <p class="lead">ADRIATIC was founded with a simple belief: that Croatia's extraordinary coastline deserves an equally exceptional approach to hospitality.</p>
+      <p>We curate a small collection of remarkable private villas, each selected for architectural distinction, prime location, and uncompromising quality. Our team handles every detail—from private chefs to yacht charters—so your only concern is where to watch the sunset.</p>
+      <p>Based in Dubrovnik, we bring deep local knowledge and personal relationships to create experiences that reveal the authentic character of the Adriatic.</p>
     </div>
   </section>
-  
+
   <section class="values">
-    <div class="values__header">
-      <span class="values__tag">Our Values</span>
-      <h2>What Sets Us Apart</h2>
+    <div class="value">
+      <span>01</span>
+      <h3>Curated Excellence</h3>
+      <p>We personally visit and vet every property. Only the exceptional make our collection.</p>
     </div>
-    <div class="values__grid">
-      <div class="value">
-        <span class="value__num">01</span>
-        <h3>Curated Excellence</h3>
-        <p>We say no more often than we say yes. Only properties that meet our exacting standards join the collection.</p>
-      </div>
-      <div class="value">
-        <span class="value__num">02</span>
-        <h3>Personal Touch</h3>
-        <p>Every guest is assigned a dedicated concierge who knows Croatia intimately and anticipates your needs.</p>
-      </div>
-      <div class="value">
-        <span class="value__num">03</span>
-        <h3>Local Expertise</h3>
-        <p>Our team lives and breathes Croatia. We share hidden gems, local connections, and insider experiences.</p>
-      </div>
-      <div class="value">
-        <span class="value__num">04</span>
-        <h3>Seamless Service</h3>
-        <p>From your first inquiry to your farewell, every detail is handled with precision and care.</p>
-      </div>
+    <div class="value">
+      <span>02</span>
+      <h3>Local Expertise</h3>
+      <p>Our Dubrovnik-based team knows every hidden beach, restaurant, and experience worth having.</p>
+    </div>
+    <div class="value">
+      <span>03</span>
+      <h3>Personal Service</h3>
+      <p>One dedicated concierge for your entire stay. Available 24/7.</p>
     </div>
   </section>
-  
-  <section class="team">
-    <div class="team__content">
-      <span class="team__tag">The Team</span>
-      <h2>Meet Our Founders</h2>
-      <p>
-        Ana and Marko founded Dalmatia Estates with a shared vision: to showcase 
-        Croatia's beauty through exceptional hospitality. With backgrounds in 
-        architecture and luxury hospitality, they bring a unique perspective to 
-        every property in our collection.
-      </p>
-      <blockquote>
-        "We don't just rent villas. We create the backdrop for life's most precious moments."
-        <cite>— Ana Horvat, Co-Founder</cite>
-      </blockquote>
-    </div>
-    <div class="team__image">
-      <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=85&auto=format" alt="Our team" loading="lazy" />
-    </div>
-  </section>
-  
-  <section class="stats-section">
-    <div class="stats-section__grid">
-      <div class="stat-item">
-        <span class="stat-item__num">48</span>
-        <span class="stat-item__label">Curated Estates</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-item__num">12</span>
-        <span class="stat-item__label">Years of Excellence</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-item__num">5,000+</span>
-        <span class="stat-item__label">Happy Guests</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-item__num">98%</span>
-        <span class="stat-item__label">Return Rate</span>
-      </div>
-    </div>
-  </section>
-  
-  <section class="cta-section">
-    <h2>Ready to experience Croatian luxury?</h2>
-    <p>Let us help you find the perfect estate for your next escape.</p>
-    <a href="/contact" class="btn btn--primary">Get in Touch</a>
+
+  <section class="cta">
+    <h2>Ready to experience<br/>the Adriatic?</h2>
+    <a href={`${base}contact/`} class="btn">Get in Touch</a>
   </section>
 </Layout>
 
 <style>
-  .about-intro {
+  .page-header {
+    padding: 180px 5% 80px;
+    text-align: center;
+  }
+  
+  .page-header span {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 24px;
+  }
+  
+  .page-header h1 {
+    font-size: clamp(40px, 6vw, 64px);
+  }
+  
+  .story {
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 80px;
-    padding: 100px 5%;
+    padding: 80px 10%;
+    max-width: 1400px;
+    margin: 0 auto;
     align-items: center;
   }
   
-  .about-intro__image {
-    aspect-ratio: 4/3;
+  .story__image {
+    aspect-ratio: 4/5;
     overflow: hidden;
   }
   
-  .about-intro__image img {
-    width: 100%; height: 100%;
+  .story__image img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
   }
   
-  .about-intro__content h2 {
-    font-size: clamp(32px, 4vw, 44px);
+  .story__content p {
+    font-size: 16px;
+    color: var(--gray);
+    line-height: 1.9;
     margin-bottom: 24px;
-    color: var(--charcoal);
   }
   
-  .about-intro__content h2 em {
-    font-style: italic;
-    color: var(--olive);
-  }
-  
-  .about-intro__content p {
-    font-size: 17px;
-    color: var(--charcoal-light);
-    line-height: 1.8;
-    margin-bottom: 20px;
+  .story__content .lead {
+    font-size: 20px;
+    color: var(--black);
+    line-height: 1.7;
   }
   
   .values {
-    padding: 100px 5%;
-    background: var(--linen);
-  }
-  
-  .values__header {
-    text-align: center;
-    margin-bottom: 60px;
-  }
-  
-  .values__tag {
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--olive);
-    margin-bottom: 16px;
-    display: block;
-  }
-  
-  .values__header h2 {
-    font-size: clamp(32px, 4vw, 44px);
-    color: var(--charcoal);
-  }
-  
-  .values__grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 32px;
-    max-width: 1200px;
-    margin: 0 auto;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    padding: 100px 10%;
+    background: var(--light);
   }
   
-  .value {
-    text-align: center;
-    padding: 40px 24px;
-  }
-  
-  .value__num {
-    font-family: 'Instrument Serif', serif;
-    font-size: 48px;
-    color: var(--sand);
+  .value span {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    color: var(--gold);
     display: block;
     margin-bottom: 20px;
   }
   
   .value h3 {
-    font-family: 'Outfit', sans-serif;
-    font-size: 18px;
-    font-weight: 500;
-    margin-bottom: 12px;
-    color: var(--charcoal);
+    font-size: 22px;
+    margin-bottom: 16px;
   }
   
   .value p {
     font-size: 15px;
-    color: var(--charcoal-light);
-    line-height: 1.6;
-  }
-  
-  .team {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    padding: 100px 5%;
-    align-items: center;
-  }
-  
-  .team__tag {
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--olive);
-    margin-bottom: 16px;
-    display: block;
-  }
-  
-  .team__content h2 {
-    font-size: clamp(32px, 4vw, 44px);
-    margin-bottom: 24px;
-    color: var(--charcoal);
-  }
-  
-  .team__content p {
-    font-size: 17px;
-    color: var(--charcoal-light);
+    color: var(--gray);
     line-height: 1.8;
-    margin-bottom: 32px;
   }
   
-  .team__content blockquote {
-    padding-left: 24px;
-    border-left: 3px solid var(--olive);
-    font-family: 'Instrument Serif', serif;
-    font-size: 22px;
-    font-style: italic;
-    color: var(--charcoal);
-    line-height: 1.5;
-  }
-  
-  .team__content cite {
-    display: block;
-    font-family: 'Outfit', sans-serif;
-    font-size: 14px;
-    font-style: normal;
-    color: var(--stone);
-    margin-top: 16px;
-  }
-  
-  .team__image {
-    aspect-ratio: 4/3;
-    overflow: hidden;
-  }
-  
-  .team__image img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-  }
-  
-  .stats-section {
-    padding: 100px 5%;
-    background: var(--olive);
-  }
-  
-  .stats-section__grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 40px;
+  .cta {
     text-align: center;
+    padding: 140px 5%;
   }
   
-  .stat-item__num {
-    font-family: 'Instrument Serif', serif;
-    font-size: clamp(42px, 5vw, 64px);
-    color: var(--cream);
-    display: block;
-    margin-bottom: 8px;
+  .cta h2 {
+    font-size: clamp(32px, 5vw, 48px);
+    margin-bottom: 40px;
+    line-height: 1.3;
   }
   
-  .stat-item__label {
-    font-size: 14px;
-    color: var(--sand);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-  
-  .cta-section {
-    padding: 120px 5%;
-    background: var(--cream);
-    text-align: center;
-  }
-  
-  .cta-section h2 {
-    font-size: clamp(28px, 3.5vw, 40px);
-    color: var(--charcoal);
-    margin-bottom: 16px;
-  }
-  
-  .cta-section p {
-    font-size: 17px;
-    color: var(--charcoal-light);
-    margin-bottom: 32px;
-  }
-  
-  @media (max-width: 1024px) {
-    .about-intro { grid-template-columns: 1fr; }
-    .values__grid { grid-template-columns: repeat(2, 1fr); }
-    .team { grid-template-columns: 1fr; }
-    .stats-section__grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  
-  @media (max-width: 768px) {
-    .about-intro { padding: 60px 5%; }
-    .values { padding: 60px 5%; }
-    .values__grid { grid-template-columns: 1fr; }
-    .team { padding: 60px 5%; }
-    .stats-section { padding: 60px 5%; }
-    .stats-section__grid { grid-template-columns: repeat(2, 1fr); gap: 40px 20px; }
-    .cta-section { padding: 80px 5%; }
+  @media (max-width: 900px) {
+    .story {
+      grid-template-columns: 1fr;
+      gap: 48px;
+      padding: 60px 5%;
+    }
+    
+    .values {
+      grid-template-columns: 1fr;
+      padding: 60px 5%;
+    }
   }
 </style>
